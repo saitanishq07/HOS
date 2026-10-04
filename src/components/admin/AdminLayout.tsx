@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation, Outlet } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import { dbService } from '../../services/db';
+import { dbService, getImageUrl } from '../../services/db';
 import { Enquiry } from '../../types';
 import {
   LayoutDashboard,
@@ -69,7 +69,7 @@ export const AdminLayout: React.FC = () => {
         <div className="p-6 border-b border-white/10 flex items-center justify-between">
           <Link to="/admin/dashboard" className="flex items-center space-x-3">
             <div className="w-10 h-10 rounded-full bg-white/10 p-1 border border-[#D4AF37]/50 flex items-center justify-center shadow-inner">
-              <img src="/logo.png" alt="House of Seetah" className="max-h-full max-w-full object-contain filter brightness-110" />
+              <img src={getImageUrl('/logo.png')} alt="House of Seetah" className="max-h-full max-w-full object-contain filter brightness-110" />
             </div>
             <div>
               <h1 className="font-serif text-lg font-bold tracking-wide text-white">HOUSE OF SEETAH</h1>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ShoppingBag, ShieldCheck, Search, Truck } from 'lucide-react';
 import { BusinessSettings } from '../../types';
-import { initialSettings } from '../../services/db';
+import { initialSettings, getImageUrl } from '../../services/db';
 import { useCart } from '../../context/CartContext';
 
 interface NavbarProps {
@@ -75,7 +75,7 @@ export const Navbar: React.FC<NavbarProps> = ({ settings = initialSettings }) =>
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-white/10 p-1 border border-[#D4AF37]/60 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-md">
                 <img
-                  src={settings.logoUrl || '/logo.png'}
+                  src={getImageUrl(settings.logoUrl)}
                   alt={settings.companyName}
                   className="max-h-full max-w-full object-contain filter brightness-110"
                 />

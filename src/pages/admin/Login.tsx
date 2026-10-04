@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { Lock, Mail, ShieldCheck, ArrowRight, Sparkles } from 'lucide-react';
+import { getImageUrl } from '../../services/db';
 
 export const Login: React.FC = () => {
   const [email, setEmail] = useState('admin@houseofseetah.com');
@@ -41,7 +42,7 @@ export const Login: React.FC = () => {
           <Link to="/" className="inline-block group">
             <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-tr from-[#022A6B] via-[#0442A5] to-[#0553d1] p-1 border-2 border-[#D4AF37] shadow-2xl group-hover:scale-105 transition-transform">
               <div className="w-full h-full bg-[#0A0C10] rounded-full flex items-center justify-center p-2">
-                <img src="/logo.png" alt="House of Seetah Logo" className="max-h-full max-w-full object-contain filter brightness-110" />
+                <img src={getImageUrl('/logo.png')} alt="House of Seetah Logo" className="max-h-full max-w-full object-contain filter brightness-110" />
               </div>
             </div>
           </Link>

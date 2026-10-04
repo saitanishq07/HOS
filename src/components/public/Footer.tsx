@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, Clock, Award, ShieldCheck, CheckCircle2, Truck } from 'lucide-react';
 import { BusinessSettings } from '../../types';
-import { initialSettings } from '../../services/db';
+import { initialSettings, getImageUrl } from '../../services/db';
 
 interface FooterProps {
   settings?: BusinessSettings;
@@ -19,7 +19,7 @@ export const Footer: React.FC<FooterProps> = ({ settings = initialSettings }) =>
             <div className="flex items-center space-x-3">
               <div className="w-11 h-11 rounded-full bg-white/5 p-1 border border-[#D4AF37]/60 flex items-center justify-center">
                 <img
-                  src={settings.logoUrl || '/logo.png'}
+                  src={getImageUrl(settings.logoUrl)}
                   alt={settings.companyName}
                   className="max-h-full max-w-full object-contain filter brightness-110"
                 />
