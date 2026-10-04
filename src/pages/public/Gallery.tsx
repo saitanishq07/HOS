@@ -56,16 +56,15 @@ export const Gallery: React.FC = () => {
   );
 
   return (
-    <div className="bg-[#FAF7F2] min-h-screen text-[#1A1816] pt-28 pb-24 font-sans">
+    <div className="bg-[#FAF8F5] min-h-screen text-slate-900 pt-6 pb-24 font-sans">
       {/* Editorial Header */}
-      <div className="bg-[#01173C] text-white py-16 mb-12 border-b border-[#0442A5]/30 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#0442A5_0%,_#01173C_85%)] opacity-90" />
+      <div className="bg-white text-slate-900 py-16 mb-12 border-b border-[#D4AF37]/30 shadow-sm relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <span className="text-xs uppercase tracking-[0.3em] font-bold text-[#D4AF37]">Visual Archival Exhibition</span>
-          <h1 className="font-serif-luxury text-4xl sm:text-6xl font-bold tracking-tight text-white mt-2 mb-4">
+          <h1 className="font-serif text-4xl sm:text-6xl font-bold tracking-tight text-[#01173C] mt-2 mb-4">
             House of Seetah Art Gallery
           </h1>
-          <p className="text-[#CDEBFF]/90 max-w-2xl mx-auto text-sm sm:text-base font-light">
+          <p className="text-slate-600 max-w-2xl mx-auto text-sm sm:text-base font-light">
             Exhibition showcasing all 45 handcrafted Indian art pieces, circular Pichwai medallions, carved brass reliefs, and folk masks.
           </p>
         </div>
@@ -80,8 +79,8 @@ export const Gallery: React.FC = () => {
               onClick={() => setSelectedCategory(cat)}
               className={`px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider whitespace-nowrap transition-all duration-300 ${
                 selectedCategory === cat
-                  ? 'bg-[#0442A5] text-white shadow-lg shadow-[#0442A5]/30 font-bold scale-105'
-                  : 'bg-white text-neutral-600 hover:bg-neutral-100 border border-neutral-200'
+                  ? 'bg-[#01173C] text-white shadow-md font-bold border border-[#D4AF37] scale-105'
+                  : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
               }`}
             >
               {cat}

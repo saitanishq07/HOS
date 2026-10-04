@@ -10,15 +10,15 @@ export const AnnouncementBar: React.FC = () => {
   ];
 
   return (
-    <div className="bg-[#01173C] text-[#CDEBFF] py-2 px-4 border-b border-[#0442A5]/50 overflow-hidden text-xs font-medium tracking-wider relative z-50">
+    <div className="bg-[#FAF8F5] text-slate-800 py-2 px-4 border-b border-[#D4AF37]/30 overflow-hidden text-[11px] font-medium tracking-widest relative z-50 shadow-sm">
       <div className="animate-marquee whitespace-nowrap flex items-center gap-12">
         {[...announcements, ...announcements].map((item, idx) => {
           const IconComponent = item.icon;
           return (
-            <div key={idx} className="inline-flex items-center gap-2 uppercase">
+            <div key={idx} className="inline-flex items-center gap-2 uppercase font-semibold text-slate-800">
               <IconComponent className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" />
               <span>{item.text}</span>
-              <span className="text-[#D4AF37]/50 ml-8">✦</span>
+              <span className="text-[#D4AF37] ml-8">✦</span>
             </div>
           );
         })}

@@ -35,20 +35,20 @@ export const Home: React.FC<HomeProps> = () => {
 
       {/* 3. ASYMMETRICAL EDITORIAL FEATURE — MASTERPIECE SPOTLIGHT */}
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-[#01173C] text-[#FAF7F2] border border-[#0442A5]/50 p-8 sm:p-12 lg:p-16 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative overflow-hidden">
+        <div className="bg-white text-slate-900 border border-[#D4AF37]/40 p-8 sm:p-12 lg:p-16 shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative overflow-hidden">
           
           {/* Subtle background glow */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#0442A5]/30 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#D4AF37]/10 rounded-full blur-3xl pointer-events-none" />
 
           {/* Left Column: Large Artwork Showcase */}
           <div className="lg:col-span-7 relative group">
-            <div className="aspect-[4/5] overflow-hidden bg-[#0A162B] border border-[#D4AF37]/50 shadow-2xl relative">
+            <div className="aspect-[4/5] overflow-hidden bg-slate-50 border border-[#D4AF37]/50 shadow-xl relative">
               <img
                 src={getImageUrl('/images/art_product_01.jpeg')}
                 alt="Srinathji Pichwai Art Medallion"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute top-6 left-6 px-4 py-1.5 bg-[#0442A5] text-white border border-[#D4AF37]/50 text-xs font-semibold uppercase tracking-[0.2em] shadow-lg">
+              <div className="absolute top-6 left-6 px-4 py-1.5 bg-[#01173C] text-white border border-[#D4AF37]/50 text-xs font-semibold uppercase tracking-[0.2em] shadow-md">
                 Atelier Masterpiece Highlight
               </div>
             </div>
@@ -61,30 +61,30 @@ export const Home: React.FC<HomeProps> = () => {
               <span>Rajasthan Pichwai Guild</span>
             </div>
 
-            <h2 className="font-serif text-3xl sm:text-5xl font-bold text-white leading-tight">
+            <h2 className="font-serif text-3xl sm:text-5xl font-bold text-[#01173C] leading-tight">
               Srinathji Sacred Devotional Art Medallion
             </h2>
 
-            <p className="text-[#CDEBFF]/85 text-sm sm:text-base leading-relaxed font-light">
+            <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-light">
               Hand-gilded in pure 24K gold leaf by hereditary Nathdwara master painters. Rendered with organic stone pigments extracted from lapis lazuli and malachite, framed in museum-grade protective glass and antique brocade silk.
             </p>
 
-            <div className="grid grid-cols-2 gap-4 py-4 border-y border-white/10 text-xs">
+            <div className="grid grid-cols-2 gap-4 py-4 border-y border-slate-200 text-xs">
               <div>
-                <p className="text-[#D4AF37] font-semibold uppercase tracking-wider">Medium</p>
-                <p className="font-medium text-white mt-0.5">24K Gold Foil & Natural Dyes</p>
+                <p className="text-[#D4AF37] font-bold uppercase tracking-wider">Medium</p>
+                <p className="font-semibold text-slate-800 mt-0.5">24K Gold Foil & Natural Dyes</p>
               </div>
               <div>
-                <p className="text-[#D4AF37] font-semibold uppercase tracking-wider">Provenance</p>
-                <p className="font-medium text-white mt-0.5">Nathdwara Guild Heritage</p>
+                <p className="text-[#D4AF37] font-bold uppercase tracking-wider">Provenance</p>
+                <p className="font-semibold text-slate-800 mt-0.5">Nathdwara Guild Heritage</p>
               </div>
             </div>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pt-2">
               <div>
-                <p className="text-xs text-[#CDEBFF]/70 uppercase font-semibold">Framed Acquisition Value</p>
-                <p className="text-2xl font-serif font-bold text-[#D4AF37]">
-                  ₹185,000 <span className="text-xs text-[#CDEBFF]/70 font-sans font-normal">(Incl. Tax & Insured Shipping)</span>
+                <p className="text-xs text-slate-500 uppercase font-semibold">Framed Acquisition Value</p>
+                <p className="text-2xl font-serif font-bold text-[#01173C]">
+                  ₹185,000 <span className="text-xs text-slate-500 font-sans font-normal">(Incl. Tax & Insured Shipping)</span>
                 </p>
               </div>
 
@@ -96,7 +96,7 @@ export const Home: React.FC<HomeProps> = () => {
                     openCart();
                   }
                 }}
-                className="px-6 py-4 bg-gradient-to-r from-[#0442A5] via-[#0553d1] to-[#022A6B] hover:from-[#0553d1] hover:to-[#0442A5] text-white text-xs font-semibold uppercase tracking-widest shadow-xl flex items-center justify-center space-x-2 transition-all border border-[#D4AF37]/40"
+                className="px-6 py-4 bg-[#01173C] hover:bg-[#082659] text-white text-xs font-semibold uppercase tracking-widest shadow-lg flex items-center justify-center space-x-2 transition-all border border-[#D4AF37]/50"
               >
                 <ShoppingBag className="w-4 h-4 text-[#D4AF37]" />
                 <span>Add to Inquiry Bag</span>
@@ -107,11 +107,11 @@ export const Home: React.FC<HomeProps> = () => {
       </section>
 
       {/* 4. CURATED ARTFORMS CATEGORIES */}
-      <section className="py-20 bg-[#0B192C] text-[#FAF7F2] border-y border-[#0442A5]/30">
+      <section className="py-20 bg-[#FAF8F5] text-slate-900 border-y border-[#D4AF37]/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-            <span className="text-xs uppercase tracking-[0.3em] font-semibold text-[#D4AF37]">CURATED ARTFORMS</span>
-            <h2 className="font-serif text-3xl sm:text-5xl font-bold text-white">
+            <span className="text-xs uppercase tracking-[0.3em] font-bold text-[#D4AF37]">CURATED ARTFORMS</span>
+            <h2 className="font-serif text-3xl sm:text-5xl font-bold text-[#01173C]">
               Explore Our Heritage Collections
             </h2>
             <div className="w-16 h-0.5 bg-[#D4AF37] mx-auto mt-4" />
@@ -147,24 +147,24 @@ export const Home: React.FC<HomeProps> = () => {
               <Link
                 key={index}
                 to={item.link}
-                className="bg-[#01173C] overflow-hidden border border-[#0442A5]/40 hover:border-[#D4AF37]/60 shadow-2xl transition-all duration-500 group flex flex-col justify-between"
+                className="bg-white overflow-hidden border border-[#D4AF37]/30 hover:border-[#D4AF37] shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col justify-between"
               >
-                <div className="aspect-[4/3] bg-black/40 overflow-hidden relative">
+                <div className="aspect-[4/3] bg-slate-100 overflow-hidden relative">
                   <img
                     src={getImageUrl(item.image)}
                     alt={item.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#01173C] via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                 </div>
                 <div className="p-6">
-                  <h3 className="font-serif font-bold text-xl text-white mb-2 group-hover:text-[#CDEBFF] transition-colors">
+                  <h3 className="font-serif font-bold text-xl text-[#01173C] mb-2 group-hover:text-[#0442A5] transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-[#CDEBFF]/75 font-light leading-relaxed mb-4">
+                  <p className="text-xs text-slate-600 font-light leading-relaxed mb-4">
                     {item.desc}
                   </p>
-                  <span className="text-xs font-semibold text-[#D4AF37] uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                  <span className="text-xs font-bold text-[#D4AF37] uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform">
                     Discover Collection <ArrowRight className="w-3.5 h-3.5" />
                   </span>
                 </div>
@@ -176,23 +176,23 @@ export const Home: React.FC<HomeProps> = () => {
 
       {/* 5. CLIENT ORDER TRACKING PROMOTIONAL BANNER */}
       <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-[#0442A5] text-white p-8 sm:p-12 border border-[#D4AF37]/50 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
+        <div className="bg-[#FAF8F5] text-slate-900 p-8 sm:p-12 border border-[#D4AF37]/40 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
           <div className="space-y-3 max-w-2xl relative z-10">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-black/30 text-[#D4AF37] text-[11px] font-semibold tracking-widest uppercase border border-[#D4AF37]/30">
-              <Truck className="w-3.5 h-3.5" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white text-[#01173C] text-[11px] font-bold tracking-widest uppercase border border-[#D4AF37]/40 shadow-sm">
+              <Truck className="w-3.5 h-3.5 text-[#D4AF37]" />
               <span>Real-Time Craftsmanship Tracking</span>
             </div>
-            <h3 className="font-serif text-2xl sm:text-4xl font-bold">
+            <h3 className="font-serif text-2xl sm:text-4xl font-bold text-[#01173C]">
               Track Your Commissioned Masterpiece
             </h3>
-            <p className="text-xs sm:text-sm text-[#CDEBFF] font-light leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 font-light leading-relaxed">
               Already have an order or invoice with House of Seetah? Inspect studio craftsmanship verification, insured transit status, and doorstep delivery timing.
             </p>
           </div>
 
           <Link
             to="/track-order"
-            className="px-8 py-4 bg-[#01173C] hover:bg-[#081730] text-[#D4AF37] font-semibold text-xs uppercase tracking-[0.2em] border border-[#D4AF37] shadow-xl shrink-0 transition duration-300"
+            className="px-8 py-4 bg-[#01173C] hover:bg-[#082659] text-white font-semibold text-xs uppercase tracking-[0.2em] border border-[#D4AF37]/60 shadow-lg shrink-0 transition duration-300"
           >
             Launch Order Tracker
           </Link>
@@ -203,7 +203,7 @@ export const Home: React.FC<HomeProps> = () => {
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <span className="text-xs uppercase tracking-[0.3em] font-semibold text-[#0442A5]">ATELIER PROVENANCE</span>
+            <span className="text-xs uppercase tracking-[0.3em] font-bold text-[#D4AF37]">ATELIER PROVENANCE</span>
             <h2 className="font-serif text-3xl sm:text-5xl font-bold text-[#01173C] leading-tight">
               Preserving Centuries of Indian Artistry in Jubilee Hills, Hyderabad
             </h2>
@@ -212,16 +212,16 @@ export const Home: React.FC<HomeProps> = () => {
             </p>
             
             <div className="space-y-4 text-xs pt-2">
-              <div className="flex items-start space-x-3 p-4 bg-white border border-[#0442A5]/20 shadow-sm">
-                <CheckCircle2 className="w-5 h-5 text-[#0442A5] shrink-0 mt-0.5" />
+              <div className="flex items-start space-x-3 p-4 bg-white border border-[#D4AF37]/30 shadow-sm">
+                <CheckCircle2 className="w-5 h-5 text-[#D4AF37] shrink-0 mt-0.5" />
                 <div>
                   <p className="font-bold text-[#01173C]">Authentic Organic Materials</p>
                   <p className="text-slate-600 mt-0.5">Natural stone dyes, squirrel-hair fine brushes, 24K gold foil leaf, and solid brass casting.</p>
                 </div>
               </div>
 
-              <div className="flex items-start space-x-3 p-4 bg-white border border-[#0442A5]/20 shadow-sm">
-                <CheckCircle2 className="w-5 h-5 text-[#0442A5] shrink-0 mt-0.5" />
+              <div className="flex items-start space-x-3 p-4 bg-white border border-[#D4AF37]/30 shadow-sm">
+                <CheckCircle2 className="w-5 h-5 text-[#D4AF37] shrink-0 mt-0.5" />
                 <div>
                   <p className="font-bold text-[#01173C]">Custom Architectural Commissions</p>
                   <p className="text-slate-600 mt-0.5">Bespoke dimensions, custom silk backdrops, and dedicated interior architect concierge consultation.</p>
@@ -231,10 +231,10 @@ export const Home: React.FC<HomeProps> = () => {
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            <div className="aspect-[3/4] overflow-hidden shadow-2xl border border-[#0442A5]/30 bg-[#01173C]">
+            <div className="aspect-[3/4] overflow-hidden shadow-xl border border-[#D4AF37]/30 bg-slate-100">
               <img src={getImageUrl('/images/art_product_07.jpeg')} alt="Kamadhenu Frame" className="w-full h-full object-cover" />
             </div>
-            <div className="aspect-[3/4] overflow-hidden shadow-2xl border border-[#0442A5]/30 bg-[#01173C] mt-8">
+            <div className="aspect-[3/4] overflow-hidden shadow-xl border border-[#D4AF37]/30 bg-slate-100 mt-8">
               <img src={getImageUrl('/images/art_product_12.jpeg')} alt="Brass Seetah Figurine" className="w-full h-full object-cover" />
             </div>
           </div>
@@ -242,11 +242,11 @@ export const Home: React.FC<HomeProps> = () => {
       </section>
 
       {/* 7. FEATURED CATALOG GRID WITH INQUIRY BAG & LIGHTBOX MODAL */}
-      <section className="py-20 bg-white border-t border-[#0442A5]/20">
+      <section className="py-20 bg-white border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
             <div>
-              <span className="text-xs uppercase tracking-[0.3em] font-semibold text-[#0442A5]">CURATED MASTERPIECES</span>
+              <span className="text-xs uppercase tracking-[0.3em] font-bold text-[#D4AF37]">CURATED MASTERPIECES</span>
               <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#01173C] mt-1">
                 Featured Artwork Showcase
               </h2>
@@ -254,9 +254,9 @@ export const Home: React.FC<HomeProps> = () => {
 
             <Link
               to="/products"
-              className="text-xs uppercase tracking-widest font-semibold text-[#0442A5] hover:underline flex items-center gap-1"
+              className="text-xs uppercase tracking-widest font-bold text-[#01173C] hover:underline flex items-center gap-1"
             >
-              View Full Catalog ({featuredProducts.length}+) <ArrowRight className="w-4 h-4" />
+              View Full Catalog ({featuredProducts.length}+) <ArrowRight className="w-4 h-4 text-[#D4AF37]" />
             </Link>
           </div>
 
@@ -266,10 +266,10 @@ export const Home: React.FC<HomeProps> = () => {
               return (
                 <div
                   key={prod.id}
-                  className="bg-[#F4F7FC] overflow-hidden border border-[#0442A5]/20 shadow-md hover:shadow-2xl transition-all duration-500 group flex flex-col justify-between"
+                  className="bg-white overflow-hidden border border-[#D4AF37]/30 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col justify-between"
                 >
                   <div>
-                    <div className="aspect-[4/3] bg-[#01173C] overflow-hidden relative">
+                    <div className="aspect-[4/3] bg-slate-100 overflow-hidden relative">
                       <img
                         src={getImageUrl(prod.imageUrl)}
                         alt={title}
@@ -277,7 +277,7 @@ export const Home: React.FC<HomeProps> = () => {
                       />
                       <button
                         onClick={() => setSelectedProduct(prod)}
-                        className="absolute bottom-3 right-3 p-2 bg-[#01173C]/90 text-[#CDEBFF] hover:text-[#D4AF37] border border-[#0442A5]/40"
+                        className="absolute bottom-3 right-3 p-2 bg-white/90 text-slate-800 hover:text-[#01173C] border border-slate-200 shadow-md"
                         title="Inspect Artwork"
                       >
                         <Eye className="w-4 h-4" />
@@ -285,7 +285,7 @@ export const Home: React.FC<HomeProps> = () => {
                     </div>
 
                     <div className="p-5">
-                      <span className="text-[10px] uppercase font-semibold tracking-wider text-[#0442A5]">
+                      <span className="text-[10px] uppercase font-bold tracking-wider text-[#D4AF37]">
                         {prod.categoryName || prod.category}
                       </span>
                       <h3 className="font-serif font-bold text-lg text-[#01173C] mt-1 line-clamp-1">{title}</h3>
@@ -293,13 +293,13 @@ export const Home: React.FC<HomeProps> = () => {
                     </div>
                   </div>
 
-                  <div className="px-5 pb-5 pt-2 flex items-center justify-between border-t border-[#0442A5]/10">
-                    <span className="font-serif font-bold text-base text-[#0442A5]">
+                  <div className="px-5 pb-5 pt-2 flex items-center justify-between border-t border-slate-100">
+                    <span className="font-serif font-bold text-base text-[#01173C]">
                       ₹{prod.price?.toLocaleString('en-IN')}
                     </span>
                     <button
                       onClick={() => addToCart(prod)}
-                      className="px-3.5 py-2 bg-[#0442A5] hover:bg-[#0553d1] text-white text-[10px] uppercase font-semibold tracking-wider flex items-center gap-1.5 border border-[#D4AF37]/40 shadow-sm"
+                      className="px-3.5 py-2 bg-[#01173C] hover:bg-[#082659] text-white text-[10px] uppercase font-bold tracking-wider flex items-center gap-1.5 border border-[#D4AF37]/40 shadow-sm"
                     >
                       <ShoppingBag className="w-3.5 h-3.5 text-[#D4AF37]" />
                       <span>Add to Bag</span>
@@ -314,33 +314,33 @@ export const Home: React.FC<HomeProps> = () => {
 
       {/* LIGHTBOX MODAL */}
       {selectedProduct && (
-        <div className="fixed inset-0 z-50 bg-[#01173C]/80 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#0B192C] text-white border border-[#0442A5]/50 max-w-2xl w-full p-6 relative overflow-hidden shadow-2xl space-y-4">
+        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white text-slate-900 border border-[#D4AF37] max-w-2xl w-full p-6 relative overflow-hidden shadow-2xl space-y-4 rounded-lg">
             <button
               onClick={() => setSelectedProduct(null)}
-              className="absolute top-4 right-4 p-2 text-gray-400 hover:text-white"
+              className="absolute top-4 right-4 p-2 text-slate-400 hover:text-slate-900 rounded-full hover:bg-slate-100"
             >
               <X className="w-6 h-6" />
             </button>
 
-            <div className="aspect-[4/3] overflow-hidden bg-[#01173C] border border-white/10">
+            <div className="aspect-[4/3] overflow-hidden bg-slate-100 border border-slate-200 rounded">
               <img src={getImageUrl(selectedProduct.imageUrl)} alt={selectedProduct.title} className="w-full h-full object-cover" />
             </div>
 
             <div>
-              <span className="text-xs uppercase tracking-widest font-semibold text-[#D4AF37]">{selectedProduct.category}</span>
-              <h3 className="font-serif text-2xl font-bold text-white mt-1">{selectedProduct.title || selectedProduct.productName}</h3>
-              <p className="text-xs text-[#CDEBFF]/80 mt-2">{selectedProduct.description}</p>
-              <p className="text-xl font-bold text-[#D4AF37] mt-3">₹{selectedProduct.price?.toLocaleString('en-IN')}</p>
+              <span className="text-xs uppercase tracking-widest font-bold text-[#D4AF37]">{selectedProduct.category}</span>
+              <h3 className="font-serif text-2xl font-bold text-[#01173C] mt-1">{selectedProduct.title || selectedProduct.productName}</h3>
+              <p className="text-xs text-slate-600 mt-2">{selectedProduct.description}</p>
+              <p className="text-xl font-bold text-[#01173C] mt-3">₹{selectedProduct.price?.toLocaleString('en-IN')}</p>
             </div>
 
-            <div className="pt-4 border-t border-white/10 flex justify-between items-center">
+            <div className="pt-4 border-t border-slate-200 flex justify-between items-center">
               <button
                 onClick={() => {
                   addToCart(selectedProduct);
                   setSelectedProduct(null);
                 }}
-                className="px-6 py-3 bg-[#0442A5] hover:bg-[#0553d1] text-white text-xs font-semibold uppercase tracking-wider flex items-center gap-2 border border-[#D4AF37]/40 shadow-lg"
+                className="px-6 py-3 bg-[#01173C] hover:bg-[#082659] text-white text-xs font-bold uppercase tracking-wider flex items-center gap-2 border border-[#D4AF37]/50 shadow-md"
               >
                 <ShoppingBag className="w-4 h-4 text-[#D4AF37]" />
                 <span>Add to Inquiry Bag</span>

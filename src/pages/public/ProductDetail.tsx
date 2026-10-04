@@ -112,24 +112,24 @@ export const ProductDetail: React.FC<ProductDetailProps> = () => {
   }
 
   return (
-    <div className="bg-[#F4F7FC] min-h-screen text-[#01173C] pt-12 pb-24 font-sans">
+    <div className="bg-[#FAF8F5] min-h-screen text-[#01173C] pt-6 pb-24 font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Back Link */}
         <Link
           to="/products"
-          className="inline-flex items-center space-x-2 text-xs font-semibold uppercase tracking-widest text-slate-500 hover:text-[#0442A5] mb-8 transition-colors"
+          className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-slate-600 hover:text-[#01173C] mb-8 transition-colors"
         >
-          <ArrowLeft className="w-4 h-4" />
+          <ArrowLeft className="w-4 h-4 text-[#D4AF37]" />
           <span>Back to Collection Catalog</span>
         </Link>
 
         {/* MAIN PRODUCT DISPLAY GRID */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start bg-white border border-[#0442A5]/20 p-6 sm:p-10 shadow-2xl">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start bg-white border border-[#D4AF37]/30 p-6 sm:p-10 shadow-xl rounded-xl">
           
           {/* LEFT: Product Image Gallery */}
           <div className="lg:col-span-7 space-y-4">
-            <div className="aspect-[4/3] overflow-hidden bg-[#01173C] border border-[#0442A5]/30 relative group shadow-md">
+            <div className="aspect-[4/3] overflow-hidden bg-slate-100 border border-[#D4AF37]/30 relative group shadow-md rounded-lg">
               <img
                 src={getImageUrl(images[activeImageIndex] || product.imageUrl)}
                 alt={product.title || product.productName}
@@ -147,8 +147,8 @@ export const ProductDetail: React.FC<ProductDetailProps> = () => {
                   <button
                     key={idx}
                     onClick={() => setActiveImageIndex(idx)}
-                    className={`w-20 h-20 overflow-hidden border-2 transition-all shrink-0 ${
-                      activeImageIndex === idx ? 'border-[#0442A5] shadow-md scale-105' : 'border-slate-200 opacity-60'
+                    className={`w-20 h-20 overflow-hidden border-2 transition-all shrink-0 rounded ${
+                      activeImageIndex === idx ? 'border-[#01173C] shadow-md scale-105' : 'border-slate-200 opacity-60'
                     }`}
                   >
                     <img src={getImageUrl(img)} alt="" className="w-full h-full object-cover" />
@@ -161,7 +161,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = () => {
           {/* RIGHT: Product Specs & Concierge Actions */}
           <div className="lg:col-span-5 space-y-6">
             <div>
-              <span className="text-xs uppercase tracking-[0.25em] font-semibold text-[#0442A5]">
+              <span className="text-xs uppercase tracking-[0.25em] font-bold text-[#D4AF37]">
                 Archival Code: {product.productCode || product.id}
               </span>
               <h1 className="font-serif text-3xl sm:text-5xl font-bold text-[#01173C] mt-1 leading-tight">
@@ -170,14 +170,14 @@ export const ProductDetail: React.FC<ProductDetailProps> = () => {
             </div>
 
             {/* Price Banner */}
-            <div className="p-4 bg-[#F4F7FC] border border-[#0442A5]/20 flex items-center justify-between">
+            <div className="p-4 bg-[#FAF8F5] border border-[#D4AF37]/30 flex items-center justify-between rounded-lg">
               <div>
                 <span className="text-[10px] uppercase font-semibold text-slate-500 block">Acquisition Value</span>
-                <span className="font-serif font-bold text-3xl text-[#0442A5]">
+                <span className="font-serif font-bold text-3xl text-[#01173C]">
                   ₹{product.price.toLocaleString('en-IN')}
                 </span>
               </div>
-              <span className={`px-3 py-1 text-xs font-bold ${
+              <span className={`px-3 py-1 text-xs font-bold rounded ${
                 product.inStock !== false ? 'bg-emerald-50 text-emerald-800 border border-emerald-300' : 'bg-amber-50 text-amber-800 border border-amber-300'
               }`}>
                 {product.inStock !== false ? 'Available in Atelier' : 'Made to Order'}
@@ -190,19 +190,19 @@ export const ProductDetail: React.FC<ProductDetailProps> = () => {
 
             {/* Specifications Matrix */}
             <div className="grid grid-cols-2 gap-3 py-4 border-y border-slate-200 text-xs">
-              <div className="p-3 bg-[#F4F7FC]">
+              <div className="p-3 bg-[#FAF8F5] border border-slate-200 rounded">
                 <span className="text-slate-500 font-semibold block">Dimensions</span>
                 <span className="font-bold text-[#01173C] mt-0.5 block">{product.dimensions || '24 x 36 Inches'}</span>
               </div>
-              <div className="p-3 bg-[#F4F7FC]">
+              <div className="p-3 bg-[#FAF8F5] border border-slate-200 rounded">
                 <span className="text-slate-500 font-semibold block">Medium / Material</span>
                 <span className="font-bold text-[#01173C] mt-0.5 block">{product.medium || 'Natural Mineral Dyes'}</span>
               </div>
-              <div className="p-3 bg-[#F4F7FC]">
+              <div className="p-3 bg-[#FAF8F5] border border-slate-200 rounded">
                 <span className="text-slate-500 font-semibold block">HSN/SAC Code</span>
                 <span className="font-bold text-[#01173C] mt-0.5 block font-mono">{product.hsnCode || '9701'}</span>
               </div>
-              <div className="p-3 bg-[#F4F7FC]">
+              <div className="p-3 bg-[#FAF8F5] border border-slate-200 rounded">
                 <span className="text-slate-500 font-semibold block">Provenance</span>
                 <span className="font-bold text-[#01173C] mt-0.5 block">Indian Heritage Guild</span>
               </div>
@@ -212,7 +212,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = () => {
             <div className="space-y-3 pt-2">
               <button
                 onClick={() => addToCart(product)}
-                className="w-full py-4 bg-[#0442A5] hover:bg-[#0553d1] text-white font-bold text-xs uppercase tracking-widest shadow-xl flex items-center justify-center space-x-2 transition-all border border-[#D4AF37]/40"
+                className="w-full py-4 bg-[#01173C] hover:bg-[#082659] text-white font-bold text-xs uppercase tracking-widest shadow-lg flex items-center justify-center space-x-2 transition-all border border-[#D4AF37]/50 rounded"
               >
                 <ShoppingBag className="w-4 h-4 text-[#D4AF37]" />
                 <span>Add to Inquiry Bag</span>
@@ -222,7 +222,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = () => {
                 href={`https://wa.me/${(settings.phone || '+91 98765 43210').replace(/[^0-9]/g, '')}?text=${encodeURIComponent(whatsappMessage)}`}
                 target="_blank"
                 rel="noreferrer"
-                className="w-full py-4 bg-[#25D366] hover:bg-[#20ba59] text-black font-semibold text-xs uppercase tracking-widest shadow-lg flex items-center justify-center space-x-2 transition-all"
+                className="w-full py-4 bg-[#25D366] hover:bg-[#20ba59] text-black font-bold text-xs uppercase tracking-widest shadow-md flex items-center justify-center space-x-2 transition-all rounded"
               >
                 <MessageSquare className="w-4 h-4 fill-current" />
                 <span>Inquire via WhatsApp</span>
@@ -230,21 +230,21 @@ export const ProductDetail: React.FC<ProductDetailProps> = () => {
 
               <button
                 onClick={() => setIsEnquiryModalOpen(true)}
-                className="w-full py-3.5 bg-white border border-slate-300 text-slate-800 font-semibold text-xs uppercase tracking-widest hover:border-[#0442A5] flex items-center justify-center space-x-2 transition-all"
+                className="w-full py-3.5 bg-white border border-slate-300 text-[#01173C] font-bold text-xs uppercase tracking-widest hover:border-[#D4AF37] flex items-center justify-center space-x-2 transition-all rounded"
               >
-                <Send className="w-4 h-4 text-[#0442A5]" />
+                <Send className="w-4 h-4 text-[#D4AF37]" />
                 <span>Send Direct Inquiry Form</span>
               </button>
             </div>
 
             {/* Trust Assurances */}
-            <div className="grid grid-cols-2 gap-3 pt-4 text-[11px] text-slate-500">
+            <div className="grid grid-cols-2 gap-3 pt-4 text-[11px] text-slate-500 font-medium">
               <div className="flex items-center space-x-2">
                 <ShieldCheck className="w-4 h-4 text-emerald-600" />
                 <span>Verified Certificate of Provenance</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Truck className="w-4 h-4 text-[#0442A5]" />
+                <Truck className="w-4 h-4 text-[#01173C]" />
                 <span>Insured Wooden Crate Delivery</span>
               </div>
             </div>
@@ -263,16 +263,16 @@ export const ProductDetail: React.FC<ProductDetailProps> = () => {
                 <Link
                   key={rel.id}
                   to={`/products/${rel.id}`}
-                  className="bg-white border border-[#0442A5]/20 shadow-md hover:shadow-xl transition-all group overflow-hidden"
+                  className="bg-white border border-[#D4AF37]/30 shadow-md hover:shadow-xl transition-all group overflow-hidden rounded-lg"
                 >
-                  <div className="aspect-[4/3] bg-[#01173C] overflow-hidden">
+                  <div className="aspect-[4/3] bg-slate-100 overflow-hidden">
                     <img src={getImageUrl(rel.imageUrl)} alt={rel.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                   </div>
                   <div className="p-5">
                     <h3 className="font-serif font-bold text-lg text-[#01173C] line-clamp-1 group-hover:text-[#0442A5] transition-colors">
                       {rel.title || rel.productName}
                     </h3>
-                    <p className="font-serif font-bold text-[#0442A5] text-base mt-1">₹{rel.price.toLocaleString('en-IN')}</p>
+                    <p className="font-serif font-bold text-[#01173C] text-base mt-1">₹{rel.price.toLocaleString('en-IN')}</p>
                   </div>
                 </Link>
               ))}

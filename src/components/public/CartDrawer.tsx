@@ -35,24 +35,24 @@ export const CartDrawer: React.FC = () => {
     <div className="fixed inset-0 z-50 overflow-hidden font-sans">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-[#01173C]/80 backdrop-blur-sm transition-opacity"
+        className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity"
         onClick={closeCart}
       />
 
       <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
-        <div className="w-screen max-w-md bg-[#0B192C] text-[#CDEBFF] border-l border-[#0442A5]/50 shadow-2xl flex flex-col justify-between">
+        <div className="w-screen max-w-md bg-white text-slate-900 border-l border-[#D4AF37]/30 shadow-2xl flex flex-col justify-between">
           
           {/* Header */}
-          <div className="p-6 bg-[#01173C] border-b border-[#0442A5]/40 flex items-center justify-between">
+          <div className="p-6 bg-[#FAF8F5] border-b border-[#D4AF37]/30 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <ShoppingBag className="w-5 h-5 text-[#D4AF37]" />
-              <h2 className="text-xl font-serif tracking-wider text-white">
-                Inquiry Bag <span className="text-sm font-sans text-[#D4AF37]">({totalItems})</span>
+              <ShoppingBag className="w-5 h-5 text-[#01173C]" />
+              <h2 className="text-xl font-serif tracking-wider text-[#01173C]">
+                Inquiry Bag <span className="text-sm font-sans text-[#D4AF37] font-bold">({totalItems})</span>
               </h2>
             </div>
             <button
               onClick={closeCart}
-              className="p-2 text-gray-400 hover:text-white hover:bg-white/10 transition"
+              className="p-2 text-slate-400 hover:text-slate-900 hover:bg-slate-100 transition rounded-full"
               aria-label="Close Bag"
             >
               <X className="w-5 h-5" />
@@ -60,18 +60,18 @@ export const CartDrawer: React.FC = () => {
           </div>
 
           {/* Cart Items List */}
-          <div className="flex-1 overflow-y-auto p-6 space-y-6 divide-y divide-white/10">
+          <div className="flex-1 overflow-y-auto p-6 space-y-6 divide-y divide-slate-100">
             {cart.length === 0 ? (
               <div className="text-center py-16 space-y-4">
-                <ShoppingBag className="w-12 h-12 text-[#0442A5] mx-auto" />
-                <p className="font-serif text-lg text-gray-300">Your inquiry bag is empty</p>
-                <p className="text-xs text-[#CDEBFF]/70 max-w-xs mx-auto">
+                <ShoppingBag className="w-12 h-12 text-[#D4AF37] mx-auto" />
+                <p className="font-serif text-lg text-slate-800">Your inquiry bag is empty</p>
+                <p className="text-xs text-slate-500 max-w-xs mx-auto">
                   Explore our curated gallery of handcrafted Indian art and select pieces for concierge consultation.
                 </p>
                 <div className="pt-4">
                   <button
                     onClick={closeCart}
-                    className="px-6 py-3 bg-[#0442A5] hover:bg-[#0553d1] text-white text-xs uppercase tracking-widest font-semibold transition border border-[#D4AF37]/40 shadow-lg"
+                    className="px-6 py-3 bg-[#01173C] hover:bg-[#082659] text-white text-xs uppercase tracking-widest font-semibold transition border border-[#D4AF37]/40 shadow-lg"
                   >
                     Browse Collections
                   </button>
@@ -85,49 +85,49 @@ export const CartDrawer: React.FC = () => {
                     <img
                       src={getImageUrl(item.product.imageUrl || '/images/art_product_01.jpeg')}
                       alt={title}
-                      className="w-20 h-24 object-cover border border-[#0442A5]/50 bg-[#01173C]"
+                      className="w-20 h-24 object-cover border border-slate-200 bg-slate-50"
                     />
 
                     <div className="flex-1 flex flex-col justify-between">
                       <div>
                         <div className="flex justify-between items-start">
-                          <h3 className="font-serif text-base text-white line-clamp-1">{title}</h3>
+                          <h3 className="font-serif text-base text-[#01173C] font-semibold line-clamp-1">{title}</h3>
                           <button
                             onClick={() => removeFromCart(item.product.id)}
-                            className="text-gray-400 hover:text-red-400 p-1"
+                            className="text-slate-400 hover:text-red-500 p-1"
                             title="Remove item"
                           >
                             <Trash2 className="w-4 h-4" />
                           </button>
                         </div>
                         {item.product.productCode && (
-                          <p className="text-[10px] uppercase tracking-widest text-[#D4AF37] mt-0.5">
+                          <p className="text-[10px] uppercase tracking-widest text-[#D4AF37] font-semibold mt-0.5">
                             Code: {item.product.productCode}
                           </p>
                         )}
-                        <p className="text-sm font-semibold text-[#D4AF37] mt-1">
+                        <p className="text-sm font-bold text-[#01173C] mt-1">
                           ₹{item.product.price?.toLocaleString('en-IN')}
                         </p>
                       </div>
 
                       <div className="flex items-center justify-between mt-3">
-                        <div className="flex items-center border border-white/20 text-xs">
+                        <div className="flex items-center border border-slate-300 text-xs rounded">
                           <button
                             onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
-                            className="px-2 py-1 hover:bg-white/10 text-gray-300"
+                            className="px-2 py-1 hover:bg-slate-100 text-slate-600"
                           >
                             <Minus className="w-3 h-3" />
                           </button>
-                          <span className="px-3 py-1 font-medium text-white">{item.quantity}</span>
+                          <span className="px-3 py-1 font-bold text-[#01173C]">{item.quantity}</span>
                           <button
                             onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
-                            className="px-2 py-1 hover:bg-white/10 text-gray-300"
+                            className="px-2 py-1 hover:bg-slate-100 text-slate-600"
                           >
                             <Plus className="w-3 h-3" />
                           </button>
                         </div>
 
-                        <span className="text-xs text-[#CDEBFF]/80">
+                        <span className="text-xs text-slate-500 font-medium">
                           Total: ₹{((item.product.price || 0) * item.quantity).toLocaleString('en-IN')}
                         </span>
                       </div>
@@ -140,21 +140,21 @@ export const CartDrawer: React.FC = () => {
 
           {/* Footer & Action Buttons */}
           {cart.length > 0 && (
-            <div className="p-6 border-t border-[#0442A5]/40 bg-[#01173C] space-y-4">
+            <div className="p-6 border-t border-[#D4AF37]/30 bg-[#FAF8F5] space-y-4">
               <div className="flex justify-between items-baseline">
-                <span className="text-xs uppercase tracking-widest text-[#CDEBFF]/80">Estimated Value</span>
-                <span className="text-xl font-serif font-bold text-[#D4AF37]">
+                <span className="text-xs uppercase tracking-widest text-slate-600 font-medium">Estimated Value</span>
+                <span className="text-xl font-serif font-bold text-[#01173C]">
                   ₹{totalPrice.toLocaleString('en-IN')}
                 </span>
               </div>
 
-              <p className="text-[11px] text-[#CDEBFF]/70 leading-relaxed">
+              <p className="text-[11px] text-slate-600 leading-relaxed">
                 ✦ Complimentary white-glove Pan-India delivery & artisan authentication certificate included.
               </p>
 
               <button
                 onClick={handleWhatsAppInquiry}
-                className="w-full py-4 bg-[#25D366] hover:bg-[#20ba59] text-black font-semibold text-xs uppercase tracking-[0.15em] flex items-center justify-center gap-2 shadow-xl transition duration-300"
+                className="w-full py-4 bg-[#25D366] hover:bg-[#20ba59] text-black font-bold text-xs uppercase tracking-[0.15em] flex items-center justify-center gap-2 shadow-lg transition duration-300"
               >
                 <MessageSquare className="w-4 h-4 fill-current" />
                 <span>Inquire via WhatsApp</span>
@@ -163,17 +163,17 @@ export const CartDrawer: React.FC = () => {
               <div className="flex items-center justify-between text-xs pt-2">
                 <button
                   onClick={clearCart}
-                  className="text-gray-400 hover:text-red-400 transition"
+                  className="text-slate-400 hover:text-red-500 transition"
                 >
                   Clear Bag
                 </button>
                 <Link
                   to="/products"
                   onClick={closeCart}
-                  className="text-[#D4AF37] hover:underline flex items-center gap-1"
+                  className="text-[#01173C] hover:underline font-semibold flex items-center gap-1"
                 >
                   <span>Continue Browsing</span>
-                  <ArrowRight className="w-3 h-3" />
+                  <ArrowRight className="w-3 h-3 text-[#D4AF37]" />
                 </Link>
               </div>
             </div>

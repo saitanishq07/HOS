@@ -43,16 +43,15 @@ export const Contact: React.FC<ContactProps> = () => {
   };
 
   return (
-    <div className="bg-[#FAF7F2] min-h-screen text-[#1A1816] pt-28 pb-24 font-sans">
+    <div className="bg-[#FAF8F5] min-h-screen text-slate-900 pt-6 pb-24 font-sans">
       {/* Header Banner */}
-      <div className="bg-[#01173C] text-white py-16 mb-16 border-b border-[#0442A5]/30 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#0442A5_0%,_#01173C_85%)] opacity-90" />
+      <div className="bg-white text-slate-900 py-16 mb-16 border-b border-[#D4AF37]/30 shadow-sm relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <span className="text-xs uppercase tracking-[0.3em] font-bold text-[#D4AF37]">Concierge Appointments</span>
-          <h1 className="font-serif-luxury text-4xl sm:text-6xl font-bold tracking-tight text-white mt-2 mb-4">
+          <h1 className="font-serif text-4xl sm:text-6xl font-bold tracking-tight text-[#01173C] mt-2 mb-4">
             Contact House of Seetah
           </h1>
-          <p className="text-[#CDEBFF]/90 max-w-2xl mx-auto text-sm sm:text-base font-light">
+          <p className="text-slate-600 max-w-2xl mx-auto text-sm sm:text-base font-light">
             Visit our Jubilee Hills gallery atelier in Hyderabad or schedule a private art consultation for custom interior commissions.
           </p>
         </div>
@@ -62,66 +61,66 @@ export const Contact: React.FC<ContactProps> = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* LEFT: Contact & Atelier Info */}
           <div className="lg:col-span-5 space-y-8">
-            <div className="bg-white rounded-3xl border border-neutral-200/80 p-8 shadow-2xl space-y-6">
-              <h2 className="font-serif-luxury text-2xl font-bold text-neutral-900 border-b border-neutral-200 pb-4">
+            <div className="bg-white rounded-3xl border border-[#D4AF37]/30 p-8 shadow-xl space-y-6">
+              <h2 className="font-serif text-2xl font-bold text-[#01173C] border-b border-slate-200 pb-4">
                 Hyderabad Gallery Atelier
               </h2>
 
               <div className="space-y-4 text-xs">
                 <div className="flex items-start space-x-3">
-                  <MapPin className="w-5 h-5 text-[#0442A5] shrink-0 mt-0.5" />
+                  <MapPin className="w-5 h-5 text-[#D4AF37] shrink-0 mt-0.5" />
                   <div>
-                    <p className="font-bold text-neutral-900 uppercase tracking-wider">Atelier Location</p>
-                    <p className="text-neutral-600 mt-0.5">{settings.address || 'Suite 402, Heritage Crafts Plaza, Jubilee Hills, Hyderabad, Telangana - 500033'}</p>
+                    <p className="font-bold text-[#01173C] uppercase tracking-wider">Atelier Location</p>
+                    <p className="text-slate-600 mt-0.5">{settings.address || 'Suite 402, Heritage Crafts Plaza, Jubilee Hills, Hyderabad, Telangana - 500033'}</p>
                   </div>
                 </div>
 
                 <div className="flex items-center space-x-3">
-                  <Phone className="w-5 h-5 text-[#0442A5] shrink-0" />
+                  <Phone className="w-5 h-5 text-[#D4AF37] shrink-0" />
                   <div>
-                    <p className="font-bold text-neutral-900 uppercase tracking-wider">Phone & WhatsApp</p>
-                    <p className="text-neutral-600 mt-0.5">{settings.phone || '+91 98765 43210'}</p>
+                    <p className="font-bold text-[#01173C] uppercase tracking-wider">Phone & WhatsApp</p>
+                    <p className="text-slate-600 mt-0.5">{settings.phone || '+91 98765 43210'}</p>
                   </div>
                 </div>
 
                 <div className="flex items-center space-x-3">
-                  <Mail className="w-5 h-5 text-[#0442A5] shrink-0" />
+                  <Mail className="w-5 h-5 text-[#D4AF37] shrink-0" />
                   <div>
-                    <p className="font-bold text-neutral-900 uppercase tracking-wider">Support Email</p>
-                    <p className="text-neutral-600 mt-0.5">{settings.email || 'billing@houseofseetah.com'}</p>
+                    <p className="font-bold text-[#01173C] uppercase tracking-wider">Support Email</p>
+                    <p className="text-slate-600 mt-0.5">{settings.email || 'billing@houseofseetah.com'}</p>
                   </div>
                 </div>
 
                 <div className="flex items-center space-x-3">
-                  <Clock className="w-5 h-5 text-[#0442A5] shrink-0" />
+                  <Clock className="w-5 h-5 text-[#D4AF37] shrink-0" />
                   <div>
-                    <p className="font-bold text-neutral-900 uppercase tracking-wider">Operating Hours</p>
-                    <p className="text-neutral-600 mt-0.5">Mon – Sat: 10:00 AM – 7:30 PM (By Appointment)</p>
+                    <p className="font-bold text-[#01173C] uppercase tracking-wider">Operating Hours</p>
+                    <p className="text-slate-600 mt-0.5">Mon – Sat: 10:00 AM – 7:30 PM (By Appointment)</p>
                   </div>
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-neutral-200">
+              <div className="pt-4 border-t border-slate-200">
                 <a
                   href={`https://wa.me/${(settings.phone || '+91 98765 43210').replace(/[^0-9]/g, '')}?text=Hello%20House%20of%20Seetah,%20I%20would%20like%20to%20schedule%20an%20art%20concierge%20appointment.`}
                   target="_blank"
                   rel="noreferrer"
-                  className="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-widest shadow-lg flex items-center justify-center space-x-2 transition-all"
+                  className="w-full py-3.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-black font-bold text-xs uppercase tracking-widest shadow-md flex items-center justify-center space-x-2 transition-all"
                 >
-                  <MessageSquare className="w-4 h-4 text-white" />
+                  <MessageSquare className="w-4 h-4 fill-current" />
                   <span>Launch Direct WhatsApp Chat</span>
                 </a>
               </div>
             </div>
 
             {/* GST Credential Badge */}
-            <div className="p-6 bg-[#01173C] text-white rounded-3xl border border-[#D4AF37]/30 shadow-xl space-y-2">
-              <div className="flex items-center space-x-2 text-[#D4AF37] font-bold text-xs uppercase tracking-wider">
-                <ShieldCheck className="w-4 h-4" />
+            <div className="p-6 bg-white text-slate-900 rounded-3xl border border-[#D4AF37] shadow-xl space-y-2">
+              <div className="flex items-center space-x-2 text-[#01173C] font-bold text-xs uppercase tracking-wider">
+                <ShieldCheck className="w-4 h-4 text-[#D4AF37]" />
                 <span>Verified Legal Enterprise</span>
               </div>
-              <p className="font-mono text-sm font-bold text-white">GSTIN: {settings.gstin || '36AABCH9988K1Z5'}</p>
-              <p className="text-[11px] text-[#CDEBFF]/80">Registered under Telangana State Goods & Services Tax Department.</p>
+              <p className="font-mono text-sm font-bold text-[#01173C]">GSTIN: {settings.gstin || '36AABCH9988K1Z5'}</p>
+              <p className="text-[11px] text-slate-500 font-medium">Registered under Telangana State Goods & Services Tax Department.</p>
             </div>
           </div>
 

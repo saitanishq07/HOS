@@ -17,9 +17,7 @@ export const MarqueeStrip: React.FC<MarqueeStripProps> = ({ dark = true }) => {
 
   return (
     <div
-      className={`py-4 overflow-hidden border-y border-[#0442A5]/40 text-xs sm:text-sm font-serif tracking-[0.25em] uppercase select-none ${
-        dark ? 'bg-[#01173C] text-[#CDEBFF]' : 'bg-[#F4F7FC] text-[#01173C]'
-      }`}
+      className="py-4 overflow-hidden border-y border-[#D4AF37]/30 text-xs sm:text-sm font-serif tracking-[0.25em] uppercase select-none bg-[#FAF8F5] text-slate-800 font-semibold shadow-sm"
     >
       <div className="animate-marquee whitespace-nowrap flex items-center gap-12">
         {[...items, ...items].map((text, idx) => (

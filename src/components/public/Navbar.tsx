@@ -43,8 +43,8 @@ export const Navbar: React.FC<NavbarProps> = ({ settings = initialSettings }) =>
     <header
       className={`sticky top-0 left-0 right-0 z-40 transition-all duration-500 ${
         isScrolled
-          ? 'bg-[#01173C]/95 backdrop-blur-md border-b border-[#0442A5]/40 py-3 shadow-2xl'
-          : 'bg-[#01173C] border-b border-[#0442A5]/30 py-4'
+          ? 'bg-white/95 backdrop-blur-md border-b border-[#D4AF37]/30 py-3 shadow-md'
+          : 'bg-white border-b border-[#D4AF37]/25 py-4'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -58,13 +58,13 @@ export const Navbar: React.FC<NavbarProps> = ({ settings = initialSettings }) =>
                 to={link.path}
                 className={`text-xs uppercase tracking-[0.2em] font-medium transition-all relative py-1 ${
                   isActive(link.path)
-                    ? 'text-[#D4AF37] font-semibold'
-                    : 'text-[#CDEBFF]/80 hover:text-white'
+                    ? 'text-[#01173C] font-bold'
+                    : 'text-slate-700 hover:text-[#01173C]'
                 }`}
               >
                 {link.name}
                 {isActive(link.path) && (
-                  <span className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#D4AF37]" />
+                  <span className="absolute bottom-0 left-0 w-full h-[2px] bg-[#D4AF37]" />
                 )}
               </Link>
             ))}
@@ -73,21 +73,21 @@ export const Navbar: React.FC<NavbarProps> = ({ settings = initialSettings }) =>
           {/* Center Brand Crest & Title */}
           <Link to="/" className="flex flex-col items-center group py-1">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-white/10 p-1 border border-[#D4AF37]/60 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-md">
+              <div className="w-10 h-10 rounded-full bg-slate-50 p-1 border border-[#D4AF37] flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-sm">
                 <img
                   src={getImageUrl(settings.logoUrl)}
                   alt={settings.companyName}
-                  className="max-h-full max-w-full object-contain filter brightness-110"
+                  className="max-h-full max-w-full object-contain"
                   onError={(e) => {
                     (e.target as HTMLImageElement).src = getImageUrl('logo.png');
                   }}
                 />
               </div>
               <div className="flex flex-col items-start sm:items-center">
-                <span className="font-serif font-bold text-lg sm:text-2xl tracking-[0.2em] text-white group-hover:text-[#CDEBFF] transition-colors">
+                <span className="font-serif font-bold text-lg sm:text-2xl tracking-[0.2em] text-[#01173C] group-hover:text-[#0442A5] transition-colors">
                   HOUSE OF SEETAH
                 </span>
-                <span className="text-[8px] sm:text-[9px] uppercase tracking-[0.3em] text-[#D4AF37] font-medium">
+                <span className="text-[8px] sm:text-[9px] uppercase tracking-[0.3em] text-[#D4AF37] font-semibold">
                   {settings.tagline || 'Indian Art & Heritage Atelier'}
                 </span>
               </div>
@@ -102,13 +102,13 @@ export const Navbar: React.FC<NavbarProps> = ({ settings = initialSettings }) =>
                 to={link.path}
                 className={`text-xs uppercase tracking-[0.2em] font-medium transition-all relative py-1 ${
                   isActive(link.path)
-                    ? 'text-[#D4AF37] font-semibold'
-                    : 'text-[#CDEBFF]/80 hover:text-white'
+                    ? 'text-[#01173C] font-bold'
+                    : 'text-slate-700 hover:text-[#01173C]'
                 }`}
               >
                 {link.name}
                 {isActive(link.path) && (
-                  <span className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#D4AF37]" />
+                  <span className="absolute bottom-0 left-0 w-full h-[2px] bg-[#D4AF37]" />
                 )}
               </Link>
             ))}
@@ -116,13 +116,13 @@ export const Navbar: React.FC<NavbarProps> = ({ settings = initialSettings }) =>
             {/* Inquiry Bag Drawer Button */}
             <button
               onClick={openCart}
-              className="relative p-2 text-[#CDEBFF] hover:text-[#D4AF37] transition-colors"
+              className="relative p-2 text-slate-700 hover:text-[#D4AF37] transition-colors"
               aria-label="Open Inquiry Bag"
               title="Inquiry Bag"
             >
-              <ShoppingBag className="w-5 h-5" />
+              <ShoppingBag className="w-5 h-5 text-[#01173C]" />
               {totalItems > 0 && (
-                <span className="absolute -top-1 -right-1 bg-[#0442A5] text-white border border-[#D4AF37] text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 bg-[#01173C] text-white border border-[#D4AF37] text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
                   {totalItems}
                 </span>
               )}
@@ -131,7 +131,7 @@ export const Navbar: React.FC<NavbarProps> = ({ settings = initialSettings }) =>
             {/* Admin Link */}
             <Link
               to="/admin/login"
-              className="p-2 text-[#CDEBFF]/60 hover:text-[#D4AF37] transition-colors"
+              className="p-2 text-slate-400 hover:text-[#01173C] transition-colors"
               title="Private Admin System"
             >
               <ShieldCheck className="w-5 h-5" />
@@ -142,12 +142,12 @@ export const Navbar: React.FC<NavbarProps> = ({ settings = initialSettings }) =>
           <div className="lg:hidden flex items-center space-x-3">
             <button
               onClick={openCart}
-              className="relative p-2 text-white hover:text-[#D4AF37]"
+              className="relative p-2 text-slate-800 hover:text-[#D4AF37]"
               aria-label="Open Inquiry Bag"
             >
-              <ShoppingBag className="w-6 h-6 text-[#D4AF37]" />
+              <ShoppingBag className="w-6 h-6 text-[#01173C]" />
               {totalItems > 0 && (
-                <span className="absolute -top-1 -right-1 bg-[#0442A5] text-white border border-[#D4AF37] text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 bg-[#01173C] text-white border border-[#D4AF37] text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
                   {totalItems}
                 </span>
               )}
@@ -155,10 +155,10 @@ export const Navbar: React.FC<NavbarProps> = ({ settings = initialSettings }) =>
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-white p-2 focus:outline-none"
+              className="text-slate-800 p-2 focus:outline-none"
               aria-label="Toggle Menu"
             >
-              {mobileMenuOpen ? <X className="w-7 h-7 text-[#D4AF37]" /> : <Menu className="w-7 h-7" />}
+              {mobileMenuOpen ? <X className="w-7 h-7 text-[#01173C]" /> : <Menu className="w-7 h-7 text-[#01173C]" />}
             </button>
           </div>
 
@@ -167,15 +167,15 @@ export const Navbar: React.FC<NavbarProps> = ({ settings = initialSettings }) =>
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#01173C] border-b border-[#0442A5]/40 px-6 py-6 transition-all">
+        <div className="lg:hidden bg-white border-b border-[#D4AF37]/30 px-6 py-6 transition-all shadow-xl">
           <div className="flex flex-col space-y-4">
             {allNavLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`text-sm uppercase tracking-widest font-medium py-2 border-b border-white/10 ${
-                  isActive(link.path) ? 'text-[#D4AF37] font-semibold' : 'text-[#CDEBFF]'
+                className={`text-sm uppercase tracking-widest font-medium py-2 border-b border-slate-100 ${
+                  isActive(link.path) ? 'text-[#01173C] font-bold' : 'text-slate-700'
                 }`}
               >
                 {link.name}
@@ -186,7 +186,7 @@ export const Navbar: React.FC<NavbarProps> = ({ settings = initialSettings }) =>
               <Link
                 to="/track-order"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center gap-2 bg-[#0442A5] text-white py-3 font-semibold text-xs uppercase tracking-wider border border-[#D4AF37]/40 shadow-lg"
+                className="flex items-center justify-center gap-2 bg-[#01173C] text-white py-3 font-semibold text-xs uppercase tracking-wider border border-[#D4AF37]/40 shadow-md"
               >
                 <Truck className="w-4 h-4 text-[#D4AF37]" />
                 <span>Track Order Status</span>
@@ -195,7 +195,7 @@ export const Navbar: React.FC<NavbarProps> = ({ settings = initialSettings }) =>
               <Link
                 to="/admin/login"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center gap-2 border border-white/20 text-[#CDEBFF] py-2.5 font-semibold text-xs uppercase tracking-wider"
+                className="flex items-center justify-center gap-2 border border-slate-300 text-slate-700 py-2.5 font-semibold text-xs uppercase tracking-wider"
               >
                 <ShieldCheck className="w-4 h-4 text-[#D4AF37]" />
                 <span>Admin & Billing System</span>

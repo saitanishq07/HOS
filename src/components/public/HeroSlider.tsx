@@ -95,7 +95,7 @@ export const HeroSlider: React.FC = () => {
 
   return (
     <div
-      className="relative w-full h-[85vh] min-h-[580px] bg-[#01173C] text-[#FAF7F2] overflow-hidden group select-none"
+      className="relative w-full h-[85vh] min-h-[580px] bg-slate-900 text-white overflow-hidden group select-none"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onTouchStart={handleTouchStart}
@@ -112,11 +112,11 @@ export const HeroSlider: React.FC = () => {
           <img
             src={getImageUrl(item.image)}
             alt={item.title}
-            className="w-full h-full object-cover object-center brightness-90 contrast-[1.02]"
+            className="w-full h-full object-cover object-center brightness-95 contrast-[1.02]"
           />
-          {/* Subtle Left-Side Vignette for Text Legibility without Washing Image in Blue */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#01173C]/85 via-[#01173C]/40 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#01173C]/70 via-transparent to-black/20" />
+          {/* Neutral Dark Vignette for Text Legibility without Blue Tint */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/45 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
         </div>
       ))}
 
@@ -130,7 +130,7 @@ export const HeroSlider: React.FC = () => {
             </span>
           </div>
 
-          <p className="text-xs sm:text-sm tracking-[0.2em] uppercase text-[#CDEBFF] font-medium drop-shadow-md">
+          <p className="text-xs sm:text-sm tracking-[0.2em] uppercase text-slate-200 font-medium drop-shadow-md">
             {slide.subtitle}
           </p>
 
@@ -139,14 +139,14 @@ export const HeroSlider: React.FC = () => {
             <span className="italic font-normal text-[#D4AF37] drop-shadow-md">{slide.highlight}</span>
           </h1>
 
-          <p className="text-base sm:text-lg text-[#FAF7F2]/90 font-light leading-relaxed max-w-xl drop-shadow-md">
+          <p className="text-base sm:text-lg text-slate-100 font-light leading-relaxed max-w-xl drop-shadow-md">
             {slide.description}
           </p>
 
           <div className="pt-4 flex flex-wrap gap-4 items-center">
             <Link
               to={slide.ctaLink}
-              className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#0442A5] hover:bg-[#0553d1] text-white text-xs uppercase tracking-[0.2em] font-semibold transition-all duration-300 shadow-2xl border border-[#D4AF37]/60"
+              className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#01173C] hover:bg-[#082659] text-white text-xs uppercase tracking-[0.2em] font-semibold transition-all duration-300 shadow-2xl border border-[#D4AF37]/80"
             >
               <span>{slide.ctaText}</span>
               <ArrowRight className="w-4 h-4 text-[#D4AF37]" />
@@ -154,7 +154,7 @@ export const HeroSlider: React.FC = () => {
 
             <Link
               to="/track-order"
-              className="inline-flex items-center justify-center gap-2 px-6 py-4 bg-[#01173C]/60 hover:bg-[#01173C] text-[#CDEBFF] hover:text-white text-xs uppercase tracking-[0.2em] font-medium border border-white/30 transition-all duration-300 backdrop-blur-sm shadow-lg"
+              className="inline-flex items-center justify-center gap-2 px-6 py-4 bg-white hover:bg-slate-100 text-slate-900 text-xs uppercase tracking-[0.2em] font-bold border border-white transition-all duration-300 shadow-lg"
             >
               Order Tracking
             </Link>
@@ -166,17 +166,17 @@ export const HeroSlider: React.FC = () => {
       <button
         onClick={prevSlide}
         aria-label="Previous Slide"
-        className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-30 p-3 bg-black/40 hover:bg-[#0442A5] text-white/90 hover:text-white border border-white/20 hover:border-[#D4AF37] transition-all duration-300 backdrop-blur-sm shadow-xl"
+        className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-30 p-3 bg-white/80 hover:bg-[#01173C] text-slate-900 hover:text-white border border-slate-200 hover:border-[#D4AF37] transition-all duration-300 backdrop-blur-sm shadow-xl"
       >
-        <ChevronLeft className="w-6 h-6 text-[#CDEBFF]" />
+        <ChevronLeft className="w-6 h-6" />
       </button>
 
       <button
         onClick={nextSlide}
         aria-label="Next Slide"
-        className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-30 p-3 bg-black/40 hover:bg-[#0442A5] text-white/90 hover:text-white border border-white/20 hover:border-[#D4AF37] transition-all duration-300 backdrop-blur-sm shadow-xl"
+        className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-30 p-3 bg-white/80 hover:bg-[#01173C] text-slate-900 hover:text-white border border-slate-200 hover:border-[#D4AF37] transition-all duration-300 backdrop-blur-sm shadow-xl"
       >
-        <ChevronRight className="w-6 h-6 text-[#CDEBFF]" />
+        <ChevronRight className="w-6 h-6" />
       </button>
 
       {/* Slide Indicators / Dots */}

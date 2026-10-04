@@ -84,25 +84,25 @@ export const OrderTracking: React.FC = () => {
   const activeStep = invoice ? getActiveStepIndex(invoice) : 0;
 
   return (
-    <div className="bg-[#F4F7FC] text-[#01173C] min-h-screen py-12 px-4 sm:px-6 lg:px-8 font-sans">
+    <div className="bg-[#FAF8F5] text-[#01173C] min-h-screen py-12 px-4 sm:px-6 lg:px-8 font-sans">
       <div className="max-w-4xl mx-auto space-y-12">
         
         {/* Header Title */}
         <div className="text-center space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#0442A5]/10 text-[#0442A5] border border-[#0442A5]/30 text-xs font-semibold tracking-[0.2em] uppercase">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-amber-50/80 text-[#01173C] border border-[#D4AF37]/30 text-xs font-semibold tracking-[0.2em] uppercase">
             <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
             <span>Client Order Tracking Portal</span>
           </div>
           <h1 className="text-4xl sm:text-5xl font-serif text-[#01173C]">
-            Track Your <span className="italic text-[#0442A5]">Masterpiece Journey</span>
+            Track Your <span className="italic text-[#D4AF37]">Masterpiece Journey</span>
           </h1>
           <p className="text-sm text-slate-600 max-w-xl mx-auto font-light leading-relaxed">
-            Enter your House of Seetah Invoice Number (e.g. <span className="font-semibold text-[#0442A5]">HOS-2026-001</span>) to inspect live studio craftsmanship status and white-glove transit details.
+            Enter your House of Seetah Invoice Number (e.g. <span className="font-semibold text-[#01173C]">HOS-2026-001</span>) to inspect live studio craftsmanship status and white-glove transit details.
           </p>
         </div>
 
         {/* Search Bar */}
-        <div className="bg-white p-4 sm:p-6 border border-[#0442A5]/30 shadow-xl max-w-2xl mx-auto">
+        <div className="bg-white p-4 sm:p-6 border border-[#D4AF37]/30 shadow-xl max-w-2xl mx-auto">
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -117,13 +117,13 @@ export const OrderTracking: React.FC = () => {
                 placeholder="Enter Invoice Number (e.g. HOS-2026-001)"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-3.5 bg-[#F4F7FC] border border-slate-300 focus:border-[#0442A5] focus:outline-none text-sm uppercase tracking-wider text-[#01173C] font-medium"
+                className="w-full pl-12 pr-4 py-3.5 bg-[#FAF8F5] border border-slate-300 focus:border-[#D4AF37] focus:outline-none text-sm uppercase tracking-wider text-[#01173C] font-medium"
               />
             </div>
             <button
               type="submit"
               disabled={loading}
-              className="px-8 py-3.5 bg-[#0442A5] hover:bg-[#0553d1] text-white font-semibold text-xs uppercase tracking-widest transition duration-300 shadow-md border border-[#D4AF37]/40 flex items-center justify-center gap-2"
+              className="px-8 py-3.5 bg-[#01173C] hover:bg-[#032254] text-white font-semibold text-xs uppercase tracking-widest transition duration-300 shadow-md border border-[#D4AF37]/40 flex items-center justify-center gap-2"
             >
               {loading ? 'Searching...' : 'Track Status'}
             </button>
@@ -140,12 +140,12 @@ export const OrderTracking: React.FC = () => {
 
         {/* Order Progress Card */}
         {invoice && (
-          <div className="bg-white border border-[#0442A5]/30 shadow-2xl overflow-hidden space-y-8 p-6 sm:p-10">
+          <div className="bg-white border border-[#D4AF37]/30 shadow-2xl overflow-hidden space-y-8 p-6 sm:p-10">
             
             {/* Top Details Header */}
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-6 border-b border-slate-200 gap-4">
               <div>
-                <span className="text-[11px] font-semibold tracking-widest text-[#0442A5] uppercase">
+                <span className="text-[11px] font-semibold tracking-widest text-[#D4AF37] uppercase">
                   INVOICE / ORDER RECORD
                 </span>
                 <h2 className="text-2xl font-serif text-[#01173C] font-bold">
@@ -165,14 +165,14 @@ export const OrderTracking: React.FC = () => {
                   {invoice.paymentStatus || invoice.status || 'Confirmed'}
                 </span>
                 <p className="text-xs text-slate-500 mt-1">
-                  Valuation: <span className="font-semibold text-[#0442A5]">₹{invoice.grandTotal?.toLocaleString('en-IN')}</span>
+                  Valuation: <span className="font-semibold text-[#01173C]">₹{invoice.grandTotal?.toLocaleString('en-IN')}</span>
                 </p>
               </div>
             </div>
 
             {/* 5-Step Progress Stepper */}
             <div className="py-4">
-              <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#0442A5] mb-6">
+              <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#01173C] mb-6">
                 Craftsmanship & Logistics Timeline
               </h3>
 
@@ -181,7 +181,7 @@ export const OrderTracking: React.FC = () => {
                 {/* Connecting Line behind steps */}
                 <div className="hidden md:block absolute left-0 right-0 top-5 h-0.5 bg-slate-200 -z-0" />
                 <div
-                  className="hidden md:block absolute left-0 top-5 h-0.5 bg-[#0442A5] transition-all duration-700"
+                  className="hidden md:block absolute left-0 top-5 h-0.5 bg-[#01173C] transition-all duration-700"
                   style={{ width: `${(activeStep / (steps.length - 1)) * 100}%` }}
                 />
 
@@ -194,9 +194,9 @@ export const OrderTracking: React.FC = () => {
                       <div
                         className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-xs transition-all duration-300 border-2 ${
                           isCurrent
-                            ? 'bg-[#0442A5] text-white border-[#D4AF37] ring-4 ring-[#0442A5]/20 scale-110'
+                            ? 'bg-[#01173C] text-white border-[#D4AF37] ring-4 ring-[#01173C]/20 scale-110'
                             : isCompleted
-                            ? 'bg-[#0442A5] text-white border-[#0442A5]'
+                            ? 'bg-[#01173C] text-white border-[#01173C]'
                             : 'bg-slate-100 text-slate-400 border-slate-300'
                         }`}
                       >
@@ -219,8 +219,8 @@ export const OrderTracking: React.FC = () => {
 
             {/* Logistics Summary Info */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-6 border-t border-slate-200 text-xs">
-              <div className="bg-[#F4F7FC] p-4 border border-[#0442A5]/20">
-                <div className="flex items-center gap-2 text-[#0442A5] font-semibold uppercase tracking-wider mb-1">
+              <div className="bg-[#FAF8F5] p-4 border border-[#D4AF37]/30">
+                <div className="flex items-center gap-2 text-[#01173C] font-semibold uppercase tracking-wider mb-1">
                   <Truck className="w-4 h-4 text-[#D4AF37]" />
                   <span>Courier Logistics</span>
                 </div>
@@ -228,8 +228,8 @@ export const OrderTracking: React.FC = () => {
                 <p className="text-slate-500 text-[11px] mt-0.5">AWB: SQL-HOS-998823</p>
               </div>
 
-              <div className="bg-[#F4F7FC] p-4 border border-[#0442A5]/20">
-                <div className="flex items-center gap-2 text-[#0442A5] font-semibold uppercase tracking-wider mb-1">
+              <div className="bg-[#FAF8F5] p-4 border border-[#D4AF37]/30">
+                <div className="flex items-center gap-2 text-[#01173C] font-semibold uppercase tracking-wider mb-1">
                   <Clock className="w-4 h-4 text-[#D4AF37]" />
                   <span>Estimated Delivery</span>
                 </div>
@@ -237,8 +237,8 @@ export const OrderTracking: React.FC = () => {
                 <p className="text-slate-500 text-[11px] mt-0.5">Insured pan-India white-glove delivery</p>
               </div>
 
-              <div className="bg-[#F4F7FC] p-4 border border-[#0442A5]/20">
-                <div className="flex items-center gap-2 text-[#0442A5] font-semibold uppercase tracking-wider mb-1">
+              <div className="bg-[#FAF8F5] p-4 border border-[#D4AF37]/30">
+                <div className="flex items-center gap-2 text-[#01173C] font-semibold uppercase tracking-wider mb-1">
                   <ShieldCheck className="w-4 h-4 text-[#D4AF37]" />
                   <span>Artisan Guarantee</span>
                 </div>
@@ -249,7 +249,7 @@ export const OrderTracking: React.FC = () => {
 
             {/* Itemized Order List */}
             <div className="pt-4">
-              <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#0442A5] mb-3">
+              <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#01173C] mb-3">
                 Items in This Commission
               </h4>
               <div className="divide-y divide-slate-100 border border-slate-200">
@@ -259,7 +259,7 @@ export const OrderTracking: React.FC = () => {
                       <p className="font-semibold text-slate-900">{item.productName || item.productTitle || 'Custom Art Creation'}</p>
                       <p className="text-slate-500 text-[11px]">Qty: {item.quantity}</p>
                     </div>
-                    <span className="font-semibold text-[#0442A5]">
+                    <span className="font-semibold text-[#01173C]">
                       ₹{(item.totalAmount || item.unitPrice * item.quantity).toLocaleString('en-IN')}
                     </span>
                   </div>
@@ -275,9 +275,9 @@ export const OrderTracking: React.FC = () => {
               </div>
               <a
                 href="tel:+919876543210"
-                className="px-6 py-3 bg-[#0442A5] hover:bg-[#0553d1] text-white text-xs uppercase tracking-widest font-semibold flex items-center gap-2 border border-[#D4AF37]/40 shrink-0 shadow-lg"
+                className="px-6 py-3 bg-[#D4AF37] hover:bg-[#b5932b] text-[#01173C] text-xs uppercase tracking-widest font-bold flex items-center gap-2 shrink-0 shadow-lg"
               >
-                <PhoneCall className="w-4 h-4 text-[#D4AF37]" />
+                <PhoneCall className="w-4 h-4 text-[#01173C]" />
                 <span>Call Curator</span>
               </a>
             </div>
