@@ -485,7 +485,14 @@ export const initialPayments: Payment[] = [
 const getStorageItem = <T>(key: string, defaultVal: T): T => {
   try {
     const item = localStorage.getItem(`hos_${key}`);
-    return item ? JSON.parse(item) : defaultVal;
+    if (!item) return defaultVal;
+    const parsed = JSON.parse(item);
+    if (parsed === null || parsed === undefined) return defaultVal;
+    if (Array.isArray(defaultVal) && !Array.isArray(parsed)) return defaultVal;
+    if (typeof defaultVal === 'object' && defaultVal !== null && !Array.isArray(defaultVal)) {
+      return { ...defaultVal, ...parsed };
+    }
+    return parsed as T;
   } catch {
     return defaultVal;
   }
