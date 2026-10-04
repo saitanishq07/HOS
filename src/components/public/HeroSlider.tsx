@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { getImageUrl } from '../../services/db';
 
 interface Slide {
   id: number;
@@ -109,7 +110,7 @@ export const HeroSlider: React.FC = () => {
           } transform transition-transform duration-[7000ms]`}
         >
           <img
-            src={item.image}
+            src={getImageUrl(item.image)}
             alt={item.title}
             className="w-full h-full object-cover object-center brightness-90 contrast-[1.02]"
           />

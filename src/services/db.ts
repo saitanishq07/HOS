@@ -2,12 +2,14 @@ import { BusinessSettings, Product, Category, Customer, Invoice, Payment, Enquir
 
 // Helper function to resolve image URLs reliably across relative subpaths (e.g. GitHub Pages /HOS/)
 export const getImageUrl = (url?: string): string => {
-  if (!url) return './logo.png';
+  const base = import.meta.env.BASE_URL || '/';
+  const prefix = base.endsWith('/') ? base : `${base}/`;
+  if (!url) return `${prefix}logo.png`;
   if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:')) {
     return url;
   }
-  const clean = url.replace(/^\/+/, '');
-  return `./${clean}`;
+  const clean = url.replace(/^(\.\/|\/)+/, '');
+  return `${prefix}${clean}`;
 };
 
 // Initial verified business settings
@@ -26,7 +28,7 @@ export const initialSettings: BusinessSettings = {
   invoicePrefix: "HOS-INV-",
   nextInvoiceNumber: 1007,
   terms: "1. All disputes subject to Hyderabad jurisdiction.\n2. Goods once sold cannot be returned after 7 days.\n3. Handcrafted artwork features authentic artisanal character.",
-  logoUrl: "./logo.png",
+  logoUrl: "logo.png",
   signatureUrl: "",
   websiteTitle: "House of Seetah | Premium Indian Art & Handcrafted Decor",
   heroHeadline: "Indian Art & Heritage Crafted for Fine Spaces",

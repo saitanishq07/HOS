@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BusinessSettings } from '../../types';
-import { DataService, initialSettings } from '../../services/db';
+import { DataService, initialSettings, getImageUrl } from '../../services/db';
 import { ShieldCheck, MapPin, Phone, Mail, Award, CheckCircle2, Sparkles, Building2 } from 'lucide-react';
 
 interface AboutProps {
@@ -50,10 +50,10 @@ export const About: React.FC<AboutProps> = () => {
 
           <div className="lg:col-span-6 grid grid-cols-2 gap-4">
             <div className="aspect-[4/5] rounded-2xl overflow-hidden bg-neutral-100 shadow-md">
-              <img src="/images/art_product_01.jpeg" alt="Pichwai Art" className="w-full h-full object-cover" />
+              <img src={getImageUrl('/images/art_product_01.jpeg')} alt="Pichwai Art" className="w-full h-full object-cover" />
             </div>
             <div className="aspect-[4/5] rounded-2xl overflow-hidden bg-neutral-100 shadow-md mt-6">
-              <img src="/images/art_product_06.jpeg" alt="Brass Nandi Relief" className="w-full h-full object-cover" />
+              <img src={getImageUrl('/images/art_product_06.jpeg')} alt="Brass Nandi Relief" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>

@@ -2,6 +2,7 @@ import React from 'react';
 import { useCart } from '../../context/CartContext';
 import { X, Trash2, Plus, Minus, MessageSquare, ArrowRight, ShoppingBag } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { getImageUrl } from '../../services/db';
 
 export const CartDrawer: React.FC = () => {
   const { cart, isCartOpen, closeCart, removeFromCart, updateQuantity, clearCart, totalPrice, totalItems } = useCart();
@@ -82,7 +83,7 @@ export const CartDrawer: React.FC = () => {
                 return (
                   <div key={item.product.id} className="pt-6 first:pt-0 flex gap-4">
                     <img
-                      src={item.product.imageUrl || '/images/art_product_01.jpeg'}
+                      src={getImageUrl(item.product.imageUrl || '/images/art_product_01.jpeg')}
                       alt={title}
                       className="w-20 h-24 object-cover border border-[#0442A5]/50 bg-[#01173C]"
                     />

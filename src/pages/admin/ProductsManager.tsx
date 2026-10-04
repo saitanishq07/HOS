@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { dbService } from '../../services/db';
+import { dbService, getImageUrl } from '../../services/db';
 import { Product, Category } from '../../types';
 import { Package, Plus, Search, Edit3, Trash2, Image as ImageIcon, Sparkles, X, Check } from 'lucide-react';
 
@@ -158,7 +158,7 @@ export const ProductsManager: React.FC = () => {
             <div>
               <div className="aspect-[4/3] bg-neutral-900 overflow-hidden relative">
                 <img
-                  src={prod.imageUrl}
+                  src={getImageUrl(prod.imageUrl)}
                   alt={prod.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />

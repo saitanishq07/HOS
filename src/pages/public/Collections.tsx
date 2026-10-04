@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Category, BusinessSettings } from '../../types';
-import { DataService } from '../../services/db';
+import { DataService, getImageUrl } from '../../services/db';
 import { ChevronRight, Sparkles } from 'lucide-react';
 
 interface CollectionsProps {
@@ -41,7 +41,7 @@ export const Collections: React.FC<CollectionsProps> = () => {
           >
             <div className="lg:w-1/2 aspect-[4/3] w-full overflow-hidden relative bg-[#01173C]">
               <img
-                src={cat.imageUrl || '/images/art_product_01.jpeg'}
+                src={getImageUrl(cat.imageUrl || '/images/art_product_01.jpeg')}
                 alt={cat.name}
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />

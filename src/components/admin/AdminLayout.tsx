@@ -194,7 +194,7 @@ export const AdminLayout: React.FC = () => {
               <div>
                 <div className="flex items-center justify-between pb-6 border-b border-white/10 mb-6">
                   <div className="flex items-center space-x-3">
-                    <img src="/logo.png" alt="Logo" className="w-8 h-8 object-contain" />
+                    <img src={getImageUrl('/logo.png')} alt="Logo" className="w-8 h-8 object-contain" />
                     <span className="font-serif font-bold text-lg">House of Seetah</span>
                   </div>
                   <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 text-white/80 hover:text-white">

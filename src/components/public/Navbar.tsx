@@ -78,6 +78,9 @@ export const Navbar: React.FC<NavbarProps> = ({ settings = initialSettings }) =>
                   src={getImageUrl(settings.logoUrl)}
                   alt={settings.companyName}
                   className="max-h-full max-w-full object-contain filter brightness-110"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = getImageUrl('logo.png');
+                  }}
                 />
               </div>
               <div className="flex flex-col items-start sm:items-center">

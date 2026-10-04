@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { X, Eye, ArrowRight, Sparkles, Filter } from 'lucide-react';
+import { getImageUrl } from '../../services/db';
 
 interface GalleryItem {
   id: string;
@@ -98,7 +99,7 @@ export const Gallery: React.FC = () => {
             >
               <div className="aspect-[4/5] bg-[#F5F0E6] overflow-hidden relative">
                 <img
-                  src={item.imageUrl}
+                  src={getImageUrl(item.imageUrl)}
                   alt={item.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
@@ -134,7 +135,7 @@ export const Gallery: React.FC = () => {
             </button>
 
             <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-black/50 border border-neutral-800">
-              <img src={activeItem.imageUrl} alt={activeItem.title} className="w-full h-full object-contain" />
+              <img src={getImageUrl(activeItem.imageUrl)} alt={activeItem.title} className="w-full h-full object-contain" />
             </div>
 
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-neutral-800 pt-4">

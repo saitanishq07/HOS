@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Invoice } from '../../types';
-import { dbService } from '../../services/db';
+import { dbService, getImageUrl } from '../../services/db';
 import { Printer, Download, Share2, X, CheckCircle, CreditCard, Sparkles, Building2, Phone, Mail } from 'lucide-react';
 
 interface Props {
@@ -164,7 +164,7 @@ export const InvoiceViewModal: React.FC<Props> = ({ invoice, onClose, onRefresh 
           {/* Header Branding */}
           <div className="flex justify-between items-start border-b-2 border-[#0442A5] pb-6">
             <div className="flex items-start space-x-4">
-              <img src="/logo.png" alt="House of Seetah" className="w-16 h-16 object-contain" />
+              <img src={getImageUrl('/logo.png')} alt="House of Seetah" className="w-16 h-16 object-contain" />
               <div>
                 <h1 className="font-serif text-2xl font-bold tracking-wide text-[#0442A5] uppercase">
                   HOUSE OF SEETAH

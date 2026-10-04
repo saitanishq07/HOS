@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Sparkles, ShieldCheck, Award, MessageSquare, Eye, Phone, MapPin, X, Truck, ShoppingBag, CheckCircle2 } from 'lucide-react';
 import { Product, BusinessSettings } from '../../types';
-import { DataService, initialSettings } from '../../services/db';
+import { DataService, initialSettings, getImageUrl } from '../../services/db';
 import { HeroSlider } from '../../components/public/HeroSlider';
 import { MarqueeStrip } from '../../components/public/MarqueeStrip';
 import { useCart } from '../../context/CartContext';
@@ -44,7 +44,7 @@ export const Home: React.FC<HomeProps> = () => {
           <div className="lg:col-span-7 relative group">
             <div className="aspect-[4/5] overflow-hidden bg-[#0A162B] border border-[#D4AF37]/50 shadow-2xl relative">
               <img
-                src="/images/art_product_01.jpeg"
+                src={getImageUrl('/images/art_product_01.jpeg')}
                 alt="Srinathji Pichwai Art Medallion"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
@@ -151,7 +151,7 @@ export const Home: React.FC<HomeProps> = () => {
               >
                 <div className="aspect-[4/3] bg-black/40 overflow-hidden relative">
                   <img
-                    src={item.image}
+                    src={getImageUrl(item.image)}
                     alt={item.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
@@ -232,10 +232,10 @@ export const Home: React.FC<HomeProps> = () => {
 
           <div className="grid grid-cols-2 gap-4">
             <div className="aspect-[3/4] overflow-hidden shadow-2xl border border-[#0442A5]/30 bg-[#01173C]">
-              <img src="/images/art_product_07.jpeg" alt="Kamadhenu Frame" className="w-full h-full object-cover" />
+              <img src={getImageUrl('/images/art_product_07.jpeg')} alt="Kamadhenu Frame" className="w-full h-full object-cover" />
             </div>
             <div className="aspect-[3/4] overflow-hidden shadow-2xl border border-[#0442A5]/30 bg-[#01173C] mt-8">
-              <img src="/images/art_product_12.jpeg" alt="Brass Seetah Figurine" className="w-full h-full object-cover" />
+              <img src={getImageUrl('/images/art_product_12.jpeg')} alt="Brass Seetah Figurine" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -271,7 +271,7 @@ export const Home: React.FC<HomeProps> = () => {
                   <div>
                     <div className="aspect-[4/3] bg-[#01173C] overflow-hidden relative">
                       <img
-                        src={prod.imageUrl}
+                        src={getImageUrl(prod.imageUrl)}
                         alt={title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                       />
@@ -324,7 +324,7 @@ export const Home: React.FC<HomeProps> = () => {
             </button>
 
             <div className="aspect-[4/3] overflow-hidden bg-[#01173C] border border-white/10">
-              <img src={selectedProduct.imageUrl} alt={selectedProduct.title} className="w-full h-full object-cover" />
+              <img src={getImageUrl(selectedProduct.imageUrl)} alt={selectedProduct.title} className="w-full h-full object-cover" />
             </div>
 
             <div>

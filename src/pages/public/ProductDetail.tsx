@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Product, BusinessSettings } from '../../types';
-import { DataService, initialSettings } from '../../services/db';
+import { DataService, initialSettings, getImageUrl } from '../../services/db';
 import { MessageSquare, ArrowLeft, ShieldCheck, CheckCircle2, Send, Eye, Award, Truck, Sparkles, Phone, ShoppingBag } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 
@@ -131,7 +131,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = () => {
           <div className="lg:col-span-7 space-y-4">
             <div className="aspect-[4/3] overflow-hidden bg-[#01173C] border border-[#0442A5]/30 relative group shadow-md">
               <img
-                src={images[activeImageIndex] || product.imageUrl}
+                src={getImageUrl(images[activeImageIndex] || product.imageUrl)}
                 alt={product.title || product.productName}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
@@ -151,7 +151,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = () => {
                       activeImageIndex === idx ? 'border-[#0442A5] shadow-md scale-105' : 'border-slate-200 opacity-60'
                     }`}
                   >
-                    <img src={img} alt="" className="w-full h-full object-cover" />
+                    <img src={getImageUrl(img)} alt="" className="w-full h-full object-cover" />
                   </button>
                 ))}
               </div>
@@ -266,7 +266,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = () => {
                   className="bg-white border border-[#0442A5]/20 shadow-md hover:shadow-xl transition-all group overflow-hidden"
                 >
                   <div className="aspect-[4/3] bg-[#01173C] overflow-hidden">
-                    <img src={rel.imageUrl} alt={rel.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <img src={getImageUrl(rel.imageUrl)} alt={rel.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                   </div>
                   <div className="p-5">
                     <h3 className="font-serif font-bold text-lg text-[#01173C] line-clamp-1 group-hover:text-[#0442A5] transition-colors">

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { Product, BusinessSettings } from '../../types';
-import { DataService, initialSettings } from '../../services/db';
+import { DataService, initialSettings, getImageUrl } from '../../services/db';
 import { Search, Filter, Sparkles, ArrowRight, Eye, PackageX, ChevronRight, ShoppingBag } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 
@@ -149,7 +149,7 @@ export const Products: React.FC<ProductsProps> = () => {
                   <div>
                     <div className="aspect-[4/3] bg-[#01173C] overflow-hidden relative">
                       <img
-                        src={product.imageUrl}
+                        src={getImageUrl(product.imageUrl)}
                         alt={title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                       />
