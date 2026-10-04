@@ -56,7 +56,7 @@ const ProtectedRoute: React.FC<{ children: React.ReactElement }> = ({ children }
 // Public Website Layout Wrapper
 const PublicLayout: React.FC = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-[#FAF7F2]">
+    <div className="flex flex-col min-h-screen bg-[#FAF8F5]">
       <AnnouncementBar />
       <Navbar />
       <main className="flex-grow">
