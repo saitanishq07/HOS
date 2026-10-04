@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/*
+Disallow: /dashboard
+
+Sitemap: https://house-of-seetah-billing-app.web.app/sitemap.xml
