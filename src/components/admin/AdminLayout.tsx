@@ -68,9 +68,7 @@ export const AdminLayout: React.FC = () => {
         {/* Brand Header */}
         <div className="p-6 border-b border-white/10 flex items-center justify-between">
           <Link to="/admin/dashboard" className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-full bg-white/10 p-1 border border-[#D4AF37]/50 flex items-center justify-center shadow-inner">
-              <img src={getImageUrl('/logo.png')} alt="House of Seetah" className="max-h-full max-w-full object-contain filter brightness-110" />
-            </div>
+            <img src={getImageUrl('/logo.png')} alt="House of Seetah" className="h-12 w-auto object-contain filter brightness-110" />
             <div>
               <h1 className="font-serif text-lg font-bold tracking-wide text-white">HOUSE OF SEETAH</h1>
               <p className="text-[10px] text-[#CDEBFF] tracking-widest uppercase font-semibold">Admin & Billing Console</p>

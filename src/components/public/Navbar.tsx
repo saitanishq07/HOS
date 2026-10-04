@@ -72,17 +72,15 @@ export const Navbar: React.FC<NavbarProps> = ({ settings = initialSettings }) =>
 
           {/* Center Brand Crest & Title */}
           <Link to="/" className="flex flex-col items-center group py-1">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-slate-50 p-1 border border-[#D4AF37] flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-sm">
-                <img
-                  src={getImageUrl(settings.logoUrl)}
-                  alt={settings.companyName}
-                  className="max-h-full max-w-full object-contain"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = getImageUrl('logo.png');
-                  }}
-                />
-              </div>
+            <div className="flex items-center gap-3.5">
+              <img
+                src={getImageUrl(settings.logoUrl)}
+                alt={settings.companyName}
+                className="h-12 sm:h-16 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = getImageUrl('logo.png');
+                }}
+              />
               <div className="flex flex-col items-start sm:items-center">
                 <span className="font-serif font-bold text-lg sm:text-2xl tracking-[0.2em] text-[#01173C] group-hover:text-[#0442A5] transition-colors">
                   HOUSE OF SEETAH

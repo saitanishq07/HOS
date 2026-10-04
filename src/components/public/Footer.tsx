@@ -16,17 +16,15 @@ export const Footer: React.FC<FooterProps> = ({ settings = initialSettings }) =>
           
           {/* Col 1: Brand */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-3">
-              <div className="w-11 h-11 rounded-full bg-slate-50 p-1 border border-[#D4AF37] flex items-center justify-center shadow-sm">
-                <img
-                  src={getImageUrl(settings.logoUrl)}
-                  alt={settings.companyName}
-                  className="max-h-full max-w-full object-contain"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = getImageUrl('logo.png');
-                  }}
-                />
-              </div>
+            <div className="flex items-center space-x-3.5">
+              <img
+                src={getImageUrl(settings.logoUrl)}
+                alt={settings.companyName}
+                className="h-14 sm:h-20 w-auto object-contain"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = getImageUrl('logo.png');
+                }}
+              />
               <div>
                 <h3 className="font-serif font-bold text-2xl text-[#01173C] tracking-widest">
                   HOUSE OF SEETAH
