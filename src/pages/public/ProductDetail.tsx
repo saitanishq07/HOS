@@ -84,7 +84,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = () => {
 
   if (loading) {
     return (
-      <div className="bg-[#F4F7FC] min-h-screen pt-32 pb-24 font-sans max-w-7xl mx-auto px-4">
+      <div className="bg-[#FAF8F5] min-h-screen pt-32 pb-24 font-sans max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div className="aspect-[4/3] rounded-3xl animate-shimmer" />
           <div className="space-y-6">
@@ -99,11 +99,11 @@ export const ProductDetail: React.FC<ProductDetailProps> = () => {
 
   if (!product) {
     return (
-      <div className="bg-[#F4F7FC] min-h-screen text-[#01173C] pt-32 pb-24 font-sans text-center">
+      <div className="bg-[#FAF8F5] min-h-screen text-[#01173C] pt-32 pb-24 font-sans text-center">
         <div className="max-w-md mx-auto p-12 bg-white rounded-3xl border border-slate-200 shadow-xl">
           <h2 className="font-serif text-3xl font-bold mb-2">Artwork Not Found</h2>
           <p className="text-xs text-slate-500 mb-6">The requested heritage artwork could not be located in our atelier catalog.</p>
-          <Link to="/products" className="px-6 py-3 rounded-xl bg-[#0442A5] text-white text-xs font-bold uppercase tracking-wider">
+          <Link to="/products" className="px-6 py-3 bg-[#01173C] hover:bg-[#032254] text-white text-xs font-bold uppercase tracking-wider border border-[#D4AF37]/40 shadow-md">
             Return to Product Catalog
           </Link>
         </div>
@@ -315,7 +315,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = () => {
                     required
                     value={enquiryForm.name}
                     onChange={(e) => setEnquiryForm({ ...enquiryForm, name: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-[#F4F7FC] border border-slate-300 text-[#01173C] focus:border-[#0442A5]"
+                    className="w-full px-3.5 py-2.5 bg-[#FAF8F5] border border-slate-300 text-[#01173C] focus:border-[#D4AF37] focus:outline-none"
                     placeholder="e.g. Smt. Gayatri Devi"
                   />
                 </div>
@@ -328,7 +328,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = () => {
                       required
                       value={enquiryForm.phone}
                       onChange={(e) => setEnquiryForm({ ...enquiryForm, phone: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-[#F4F7FC] border border-slate-300 text-[#01173C] focus:border-[#0442A5]"
+                      className="w-full px-3.5 py-2.5 bg-[#FAF8F5] border border-slate-300 text-[#01173C] focus:border-[#D4AF37] focus:outline-none"
                       placeholder="+91 98765 43210"
                     />
                   </div>
@@ -338,7 +338,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = () => {
                       type="email"
                       value={enquiryForm.email}
                       onChange={(e) => setEnquiryForm({ ...enquiryForm, email: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-[#F4F7FC] border border-slate-300 text-[#01173C] focus:border-[#0442A5]"
+                      className="w-full px-3.5 py-2.5 bg-[#FAF8F5] border border-slate-300 text-[#01173C] focus:border-[#D4AF37] focus:outline-none"
                       placeholder="client@domain.com"
                     />
                   </div>
@@ -350,7 +350,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = () => {
                     rows={3}
                     value={enquiryForm.message}
                     onChange={(e) => setEnquiryForm({ ...enquiryForm, message: e.target.value })}
-                    className="w-full p-3 bg-[#F4F7FC] border border-slate-300 text-[#01173C] focus:border-[#0442A5]"
+                    className="w-full p-3 bg-[#FAF8F5] border border-slate-300 text-[#01173C] focus:border-[#D4AF37] focus:outline-none"
                     placeholder="Please let us know if you require custom sizing or framing..."
                   />
                 </div>

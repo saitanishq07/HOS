@@ -25,7 +25,7 @@ export const Home: React.FC<HomeProps> = () => {
   }, []);
 
   return (
-    <div className="bg-[#F4F7FC] text-[#01173C] font-sans overflow-x-hidden">
+    <div className="bg-[#FAF8F5] text-[#01173C] font-sans overflow-x-hidden">
       
       {/* 1. HERO SLIDER */}
       <HeroSlider />

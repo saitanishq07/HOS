@@ -134,13 +134,13 @@ export const Contact: React.FC<ContactProps> = () => {
             </div>
 
             {submitted ? (
-              <div className="p-12 text-center bg-[#FAF7F2] rounded-2xl border border-emerald-300 space-y-3">
+              <div className="p-12 text-center bg-[#FAF8F5] border border-emerald-300 space-y-3 shadow-md">
                 <CheckCircle2 className="w-12 h-12 text-emerald-600 mx-auto" />
-                <h3 className="font-serif-luxury text-2xl font-bold text-neutral-900">Thank You!</h3>
-                <p className="text-xs text-neutral-600">Your enquiry has been submitted to our Jubilee Hills sales CRM desk. Our lead curator will contact you within 24 hours.</p>
+                <h3 className="font-serif text-2xl font-bold text-[#01173C]">Thank You!</h3>
+                <p className="text-xs text-slate-600">Your enquiry has been submitted to our Jubilee Hills sales desk. Our lead curator will contact you within 24 hours.</p>
                 <button
                   onClick={() => setSubmitted(false)}
-                  className="mt-4 px-6 py-2.5 rounded-xl bg-[#0442A5] text-white text-xs font-bold uppercase tracking-wider"
+                  className="mt-4 px-6 py-2.5 bg-[#01173C] hover:bg-[#032254] text-white text-xs font-bold uppercase tracking-wider border border-[#D4AF37]/40 shadow-md"
                 >
                   Send Another Enquiry
                 </button>
@@ -148,48 +148,48 @@ export const Contact: React.FC<ContactProps> = () => {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4 text-xs">
                 <div>
-                  <label className="block font-semibold text-neutral-700 mb-1">Full Name *</label>
+                  <label className="block font-semibold text-slate-700 mb-1">Full Name *</label>
                   <input
                     type="text"
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 bg-[#FAF7F2] border border-neutral-300 rounded-xl text-neutral-900"
+                    className="w-full px-4 py-3 bg-[#FAF8F5] border border-slate-300 text-[#01173C] focus:border-[#D4AF37] focus:outline-none"
                     placeholder="e.g. Smt. Gayatri Devi"
                   />
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block font-semibold text-neutral-700 mb-1">Phone / WhatsApp Number *</label>
+                    <label className="block font-semibold text-slate-700 mb-1">Phone / WhatsApp Number *</label>
                     <input
                       type="text"
                       required
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-4 py-3 bg-[#FAF7F2] border border-neutral-300 rounded-xl text-neutral-900"
+                      className="w-full px-4 py-3 bg-[#FAF8F5] border border-slate-300 text-[#01173C] focus:border-[#D4AF37] focus:outline-none"
                       placeholder="+91 98765 43210"
                     />
                   </div>
 
                   <div>
-                    <label className="block font-semibold text-neutral-700 mb-1">Email Address</label>
+                    <label className="block font-semibold text-slate-700 mb-1">Email Address</label>
                     <input
                       type="email"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 bg-[#FAF7F2] border border-neutral-300 rounded-xl text-neutral-900"
+                      className="w-full px-4 py-3 bg-[#FAF8F5] border border-slate-300 text-[#01173C] focus:border-[#D4AF37] focus:outline-none"
                       placeholder="client@domain.com"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block font-semibold text-neutral-700 mb-1">Artform Category of Interest</label>
+                  <label className="block font-semibold text-slate-700 mb-1">Artform Category of Interest</label>
                   <select
                     value={formData.artCategory}
                     onChange={(e) => setFormData({ ...formData, artCategory: e.target.value })}
-                    className="w-full px-4 py-3 bg-[#FAF7F2] border border-neutral-300 rounded-xl text-neutral-900"
+                    className="w-full px-4 py-3 bg-[#FAF8F5] border border-slate-300 text-[#01173C] focus:border-[#D4AF37] focus:outline-none"
                   >
                     <option value="Pichwai & Traditional Art">Pichwai & Traditional Art</option>
                     <option value="Brassware & Relief Frames">Brassware & Relief Frames</option>
@@ -201,13 +201,13 @@ export const Contact: React.FC<ContactProps> = () => {
                 </div>
 
                 <div>
-                  <label className="block font-semibold text-neutral-700 mb-1">Your Message or Custom Dimensions</label>
+                  <label className="block font-semibold text-slate-700 mb-1">Your Message or Custom Dimensions</label>
                   <textarea
                     rows={4}
                     required
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full p-4 bg-[#FAF7F2] border border-neutral-300 rounded-xl text-neutral-900"
+                    className="w-full p-4 bg-[#FAF8F5] border border-slate-300 text-[#01173C] focus:border-[#D4AF37] focus:outline-none"
                     placeholder="Describe your inquiry or custom art requirements..."
                   />
                 </div>

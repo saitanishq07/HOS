@@ -8,7 +8,7 @@
   html {
     scroll-behavior: smooth;
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-    background-color: #F4F7FC;
+    background-color: #FAF8F5;
     color: #01173C;
   }
 
@@ -24,16 +24,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #01173C;
+  background: #FAF8F5;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #0442A5;
+  background: #D4AF37;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #D4AF37;
+  background: #01173C;
 }
 
 /* Custom Shimmer Skeleton Loader */
