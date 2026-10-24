@@ -33,6 +33,7 @@ import { PaymentsManager } from './pages/admin/PaymentsManager';
 import { ReportsManager } from './pages/admin/ReportsManager';
 import { ContentManager } from './pages/admin/ContentManager';
 import { SettingsManager } from './pages/admin/SettingsManager';
+import { ERPManager } from './pages/admin/ERPManager';
 
 // Protected Route Wrapper for Admin System
 const ProtectedRoute: React.FC<{ children: React.ReactElement }> = ({ children }) => {
@@ -101,6 +102,8 @@ export const App: React.FC = () => {
             >
               <Route index element={<Dashboard />} />
               <Route path="dashboard" element={<Dashboard />} />
+              <Route path="erp" element={<ERPManager />} />
+              <Route path="operations" element={<ERPManager />} />
               <Route path="enquiries" element={<EnquiriesManager />} />
               <Route path="products" element={<ProductsManager />} />
               <Route path="invoices" element={<InvoicesList />} />

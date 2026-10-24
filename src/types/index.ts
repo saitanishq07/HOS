@@ -213,3 +213,92 @@ export interface OrderStatusDetails {
   trackingNumber?: string;
   courierPartner?: string;
 }
+
+// Atelier ERP & Studio Operations Types
+export type CraftsmanshipStage =
+  | 'Brief & Design'
+  | 'Base & Woodwork'
+  | 'Relief & Muckwork'
+  | '24K Gold Guilding'
+  | 'Mineral Pigment Art'
+  | 'Inspection & Framing'
+  | 'Ready for Dispatch'
+  | 'Completed';
+
+export interface WorkOrder {
+  id: string;
+  orderNumber: string;
+  invoiceId?: string;
+  invoiceNumber?: string;
+  clientName: string;
+  artworkTitle: string;
+  artform: string;
+  artisanId: string;
+  artisanName: string;
+  stage: CraftsmanshipStage;
+  progressPercent: number;
+  targetCompletionDate: string;
+  startDate: string;
+  goldLeavesAllocated: number; // e.g. 120 leaves of 24K gold foil
+  materialsCost: number;
+  artisanFee: number;
+  estimatedRetailValue: number;
+  priority: 'Standard' | 'Urgent' | 'VVIP Commission';
+  dimensions: string;
+  notes?: string;
+  status: 'Active' | 'On Hold' | 'Completed';
+}
+
+export type RawMaterialCategory = 'Precious Metals' | 'Gemstones' | 'Pigments' | 'Timber & Framing' | 'Textiles';
+
+export interface RawMaterial {
+  id: string;
+  sku: string;
+  name: string;
+  category: RawMaterialCategory;
+  currentStock: number;
+  unit: string; // 'Booklets (25 leaves)', 'Carats', 'Grams', 'Running Ft', 'Meters'
+  reorderLevel: number;
+  unitCost: number;
+  totalValue: number;
+  supplier: string;
+  vaultLocation: string; // e.g. 'Jubilee Hills Safe Vault #1', 'Studio Cold Storage'
+  lastRestocked: string;
+}
+
+export interface Artisan {
+  id: string;
+  name: string;
+  guild: string;
+  specialty: string;
+  experienceYears: number;
+  phone: string;
+  city: string;
+  activeWorkOrdersCount: number;
+  rating: number;
+  monthlyCapacity: number; // Max pieces per month
+  status: 'Active' | 'On Leave';
+}
+
+export interface LogisticsShipment {
+  id: string;
+  shipmentNumber: string;
+  invoiceNumber: string;
+  clientName: string;
+  clientPhone: string;
+  destinationCity: string;
+  destinationAddress: string;
+  courierPartner: 'Sequel Logistics' | 'BVC Secure Art' | 'Blue Dart Apex' | 'Hand Carry Concierge';
+  trackingAwb: string;
+  declaredValue: number;
+  insurancePolicyNumber: string;
+  insuranceProvider: string;
+  crateType: 'Reinforced Weatherproof Teak Crate' | 'Velvet Padded Aluminium Vault Case';
+  currentStatus: OrderStep;
+  dispatchDate: string;
+  estimatedDelivery: string;
+  actualDeliveryDate?: string;
+  deliveryOtpVerified?: boolean;
+  notes?: string;
+}
+

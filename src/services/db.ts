@@ -1,4 +1,4 @@
-import { BusinessSettings, Product, Category, Customer, Invoice, Payment, Enquiry, GalleryItem } from '../types';
+import { BusinessSettings, Product, Category, Customer, Invoice, Payment, Enquiry, GalleryItem, WorkOrder, RawMaterial, Artisan, LogisticsShipment } from '../types';
 
 // Helper function to resolve image URLs reliably across relative subpaths (e.g. GitHub Pages /HOS/)
 export const getImageUrl = (url?: string): string => {
@@ -481,6 +481,280 @@ export const initialPayments: Payment[] = [
   }
 ];
 
+export const initialWorkOrders: WorkOrder[] = [
+  {
+    id: "wo-101",
+    orderNumber: "HOS-WIP-101",
+    invoiceNumber: "HOS-2026-001",
+    clientName: "Shri Vikramaditya Rao",
+    artworkTitle: "Imperial Shrinathji Lotus Medallion (Pure 24K Gold)",
+    artform: "Pichwai & Traditional Art",
+    artisanId: "art-1",
+    artisanName: "Master Ustaad Ramprasad",
+    stage: "24K Gold Guilding",
+    progressPercent: 65,
+    startDate: "2026-03-10",
+    targetCompletionDate: "2026-04-05",
+    goldLeavesAllocated: 160,
+    materialsCost: 38500,
+    artisanFee: 45000,
+    estimatedRetailValue: 185000,
+    priority: "VVIP Commission",
+    dimensions: "60 x 40 Inches",
+    notes: "Client requested 24K gold foil with antique patina border.",
+    status: "Active"
+  },
+  {
+    id: "wo-102",
+    orderNumber: "HOS-WIP-102",
+    invoiceNumber: "HOS-2026-002",
+    clientName: "Rajeshwar Rao",
+    artworkTitle: "Heritage 24K Gold Tanjore Lakshmi Ganesha Relief",
+    artform: "Brassware & Relief Frames",
+    artisanId: "art-2",
+    artisanName: "Shri Devesh Sharma",
+    stage: "Inspection & Framing",
+    progressPercent: 90,
+    startDate: "2026-03-01",
+    targetCompletionDate: "2026-03-28",
+    goldLeavesAllocated: 90,
+    materialsCost: 22000,
+    artisanFee: 28000,
+    estimatedRetailValue: 95000,
+    priority: "Standard",
+    dimensions: "24 x 30 Inches",
+    notes: "Precious stones set into gilded relief. Framing in Burma Teak.",
+    status: "Active"
+  },
+  {
+    id: "wo-103",
+    orderNumber: "HOS-WIP-103",
+    clientName: "Birla Heritage Residence",
+    artworkTitle: "Solid Brass Kamadhenu & Kalpavriksha High-Relief",
+    artform: "Brassware & Relief Frames",
+    artisanId: "art-3",
+    artisanName: "Master K. Raghavendra",
+    stage: "Relief & Muckwork",
+    progressPercent: 40,
+    startDate: "2026-03-15",
+    targetCompletionDate: "2026-04-20",
+    goldLeavesAllocated: 40,
+    materialsCost: 48000,
+    artisanFee: 52000,
+    estimatedRetailValue: 220000,
+    priority: "Urgent",
+    dimensions: "48 x 48 Inches",
+    notes: "Lost-wax cast brass medallion with deep hand chasing.",
+    status: "Active"
+  },
+  {
+    id: "wo-104",
+    orderNumber: "HOS-WIP-104",
+    clientName: "Maharani Palace Suites, Jaipur",
+    artworkTitle: "Radha Krishna Vrindavan Bower Miniature with Real Pearl Inlays",
+    artform: "Miniature Paintings & Wall Art",
+    artisanId: "art-4",
+    artisanName: "Smt. Ananya Chitrakar",
+    stage: "Mineral Pigment Art",
+    progressPercent: 75,
+    startDate: "2026-03-05",
+    targetCompletionDate: "2026-04-10",
+    goldLeavesAllocated: 50,
+    materialsCost: 19500,
+    artisanFee: 32000,
+    estimatedRetailValue: 145000,
+    priority: "VVIP Commission",
+    dimensions: "36 x 28 Inches",
+    notes: "Single squirrel-hair brush rendering with real Lapis Lazuli background.",
+    status: "Active"
+  }
+];
+
+export const initialRawMaterials: RawMaterial[] = [
+  {
+    id: "mat-1",
+    sku: "MAT-GLD-01",
+    name: "Pure 24K Gold Leaf Foil (Karat Certified 99.9%)",
+    category: "Precious Metals",
+    currentStock: 52,
+    unit: "Booklets (25 leaves)",
+    reorderLevel: 15,
+    unitCost: 4500,
+    totalValue: 234000,
+    supplier: "Jaipur Gold Guilders Trust",
+    vaultLocation: "Jubilee Hills High-Security Vault #1",
+    lastRestocked: "2026-03-20"
+  },
+  {
+    id: "mat-2",
+    sku: "MAT-GEM-02",
+    name: "Natural Untreated Jaipur Emerald Cabochons (Tanjore Inlay)",
+    category: "Gemstones",
+    currentStock: 145,
+    unit: "Carats",
+    reorderLevel: 40,
+    unitCost: 1200,
+    totalValue: 174000,
+    supplier: "Johari Bazaar Gems, Jaipur",
+    vaultLocation: "Jubilee Hills Safe Deposit B",
+    lastRestocked: "2026-03-12"
+  },
+  {
+    id: "mat-3",
+    sku: "MAT-PIG-03",
+    name: "Natural Lapis Lazuli Pigment Powder (Badakhshan Grade)",
+    category: "Pigments",
+    currentStock: 850,
+    unit: "Grams",
+    reorderLevel: 250,
+    unitCost: 180,
+    totalValue: 153000,
+    supplier: "Himalayan Mineral Co.",
+    vaultLocation: "Studio Climate-Controlled Cabinet",
+    lastRestocked: "2026-02-28"
+  },
+  {
+    id: "mat-4",
+    sku: "MAT-PIG-04",
+    name: "Natural Malachite Mineral Green Powder",
+    category: "Pigments",
+    currentStock: 620,
+    unit: "Grams",
+    reorderLevel: 200,
+    unitCost: 140,
+    totalValue: 86800,
+    supplier: "Himalayan Mineral Co.",
+    vaultLocation: "Studio Climate-Controlled Cabinet",
+    lastRestocked: "2026-02-28"
+  },
+  {
+    id: "mat-5",
+    sku: "MAT-WOD-05",
+    name: "Aged Burma Teakwood Beams (Moisture-Seasoned)",
+    category: "Timber & Framing",
+    currentStock: 125,
+    unit: "Running Ft",
+    reorderLevel: 40,
+    unitCost: 950,
+    totalValue: 118750,
+    supplier: "Timber Heritage Crafts, Kerala",
+    vaultLocation: "Atelier Woodworking Annex",
+    lastRestocked: "2026-03-05"
+  },
+  {
+    id: "mat-6",
+    sku: "MAT-TXT-06",
+    name: "Handspun Pure Mulberry Silk Brocade (Zari Border)",
+    category: "Textiles",
+    currentStock: 35,
+    unit: "Meters",
+    reorderLevel: 10,
+    unitCost: 3200,
+    totalValue: 112000,
+    supplier: "Varanasi Master Weavers",
+    vaultLocation: "Silk Storage Chest #2",
+    lastRestocked: "2026-03-15"
+  }
+];
+
+export const initialArtisans: Artisan[] = [
+  {
+    id: "art-1",
+    name: "Master Ustaad Ramprasad",
+    guild: "Nathdwara & Mewar Pichwai Guild",
+    specialty: "24K Gold Guilding & Shrinathji Iconography",
+    experienceYears: 34,
+    phone: "+91 94141 88772",
+    city: "Udaipur & Hyderabad",
+    activeWorkOrdersCount: 1,
+    rating: 4.95,
+    monthlyCapacity: 3,
+    status: "Active"
+  },
+  {
+    id: "art-2",
+    name: "Shri Devesh Sharma",
+    guild: "Thanjavur Royal Guild",
+    specialty: "24K Gold Leaf Tanjore Relief & Gem Setting",
+    experienceYears: 28,
+    phone: "+91 98402 33441",
+    city: "Hyderabad Atelier",
+    activeWorkOrdersCount: 1,
+    rating: 4.9,
+    monthlyCapacity: 4,
+    status: "Active"
+  },
+  {
+    id: "art-3",
+    name: "Master K. Raghavendra",
+    guild: "Swamimalai Bronze & Brass Guild",
+    specialty: "Lost-wax Casting & Chased Brass Reliefs",
+    experienceYears: 22,
+    phone: "+91 94441 55663",
+    city: "Swamimalai / Hyderabad",
+    activeWorkOrdersCount: 1,
+    rating: 4.85,
+    monthlyCapacity: 2,
+    status: "Active"
+  },
+  {
+    id: "art-4",
+    name: "Smt. Ananya Chitrakar",
+    guild: "Kishangarh Miniature School",
+    specialty: "Single-Hair Brush Radha Krishna Detailing",
+    experienceYears: 19,
+    phone: "+91 97831 22990",
+    city: "Jaipur / Hyderabad",
+    activeWorkOrdersCount: 1,
+    rating: 4.9,
+    monthlyCapacity: 3,
+    status: "Active"
+  }
+];
+
+export const initialShipments: LogisticsShipment[] = [
+  {
+    id: "ship-1",
+    shipmentNumber: "HOS-LOG-8821",
+    invoiceNumber: "HOS-2026-001",
+    clientName: "Shri Vikramaditya Rao",
+    clientPhone: "+91 98765 43210",
+    destinationCity: "Mumbai",
+    destinationAddress: "Altamount Road, South Mumbai - 400026",
+    courierPartner: "Sequel Logistics",
+    trackingAwb: "SQL-HOS-998823",
+    declaredValue: 185000,
+    insurancePolicyNumber: "AIG-ART-7729104",
+    insuranceProvider: "Tata AIG Fine Art Insurance",
+    crateType: "Reinforced Weatherproof Teak Crate",
+    currentStatus: "Dispatched",
+    dispatchDate: "2026-04-02",
+    estimatedDelivery: "2026-04-06",
+    notes: "Fragile 24K gold leaf relief. Dedicated climate-controlled high-value art van."
+  },
+  {
+    id: "ship-2",
+    shipmentNumber: "HOS-LOG-8822",
+    invoiceNumber: "HOS-2026-002",
+    clientName: "Rajeshwar Rao",
+    clientPhone: "+91 98200 44556",
+    destinationCity: "Hyderabad",
+    destinationAddress: "Road No. 36, Jubilee Hills, Hyderabad - 500033",
+    courierPartner: "Hand Carry Concierge",
+    trackingAwb: "HOS-CONC-042",
+    declaredValue: 52640,
+    insurancePolicyNumber: "AIG-ART-7729105",
+    insuranceProvider: "Tata AIG Fine Art Insurance",
+    crateType: "Velvet Padded Aluminium Vault Case",
+    currentStatus: "Delivered",
+    dispatchDate: "2026-03-29",
+    estimatedDelivery: "2026-03-30",
+    actualDeliveryDate: "2026-03-30",
+    deliveryOtpVerified: true,
+    notes: "Direct hand-delivery by House of Seetah Senior Curator."
+  }
+];
+
 // LocalStorage Helper
 const getStorageItem = <T>(key: string, defaultVal: T): T => {
   try {
@@ -731,6 +1005,128 @@ export const DataService = {
     }
 
     return newPay;
+  },
+
+  // Atelier ERP: Work Orders (WIP)
+  getWorkOrders: async (): Promise<WorkOrder[]> => {
+    return getStorageItem<WorkOrder[]>('work_orders', initialWorkOrders);
+  },
+  saveWorkOrder: async (wo: WorkOrder): Promise<WorkOrder[]> => {
+    const current = await DataService.getWorkOrders();
+    const idx = current.findIndex(w => w.id === wo.id || w.orderNumber === wo.orderNumber);
+    let updated: WorkOrder[];
+    if (idx >= 0) {
+      updated = [...current];
+      updated[idx] = wo;
+    } else {
+      updated = [wo, ...current];
+    }
+    setStorageItem('work_orders', updated);
+    return updated;
+  },
+  updateWorkOrderStage: async (id: string, stage: WorkOrder['stage'], progressPercent: number, notes?: string): Promise<WorkOrder[]> => {
+    const current = await DataService.getWorkOrders();
+    const updated = current.map(w => {
+      if (w.id === id) {
+        return {
+          ...w,
+          stage,
+          progressPercent,
+          status: stage === 'Completed' ? ('Completed' as const) : ('Active' as const),
+          notes: notes !== undefined ? notes : w.notes
+        };
+      }
+      return w;
+    });
+    setStorageItem('work_orders', updated);
+    return updated;
+  },
+
+  // Atelier ERP: Precious Raw Materials & Inventory
+  getRawMaterials: async (): Promise<RawMaterial[]> => {
+    return getStorageItem<RawMaterial[]>('raw_materials', initialRawMaterials);
+  },
+  saveRawMaterial: async (mat: RawMaterial): Promise<RawMaterial[]> => {
+    const current = await DataService.getRawMaterials();
+    const idx = current.findIndex(m => m.id === mat.id || m.sku === mat.sku);
+    let updated: RawMaterial[];
+    if (idx >= 0) {
+      updated = [...current];
+      updated[idx] = mat;
+    } else {
+      updated = [mat, ...current];
+    }
+    setStorageItem('raw_materials', updated);
+    return updated;
+  },
+  adjustMaterialStock: async (id: string, deltaQty: number): Promise<RawMaterial[]> => {
+    const current = await DataService.getRawMaterials();
+    const updated = current.map(m => {
+      if (m.id === id) {
+        const newQty = Math.max(0, m.currentStock + deltaQty);
+        return {
+          ...m,
+          currentStock: newQty,
+          totalValue: newQty * m.unitCost,
+          lastRestocked: deltaQty > 0 ? new Date().toISOString().split('T')[0] : m.lastRestocked
+        };
+      }
+      return m;
+    });
+    setStorageItem('raw_materials', updated);
+    return updated;
+  },
+
+  // Atelier ERP: Artisans & Guild
+  getArtisans: async (): Promise<Artisan[]> => {
+    return getStorageItem<Artisan[]>('artisans', initialArtisans);
+  },
+  saveArtisan: async (artisan: Artisan): Promise<Artisan[]> => {
+    const current = await DataService.getArtisans();
+    const idx = current.findIndex(a => a.id === artisan.id);
+    let updated: Artisan[];
+    if (idx >= 0) {
+      updated = [...current];
+      updated[idx] = artisan;
+    } else {
+      updated = [artisan, ...current];
+    }
+    setStorageItem('artisans', updated);
+    return updated;
+  },
+
+  // Atelier ERP: High-Value Logistics & Shipments
+  getShipments: async (): Promise<LogisticsShipment[]> => {
+    return getStorageItem<LogisticsShipment[]>('shipments', initialShipments);
+  },
+  saveShipment: async (shipment: LogisticsShipment): Promise<LogisticsShipment[]> => {
+    const current = await DataService.getShipments();
+    const idx = current.findIndex(s => s.id === shipment.id || s.shipmentNumber === shipment.shipmentNumber);
+    let updated: LogisticsShipment[];
+    if (idx >= 0) {
+      updated = [...current];
+      updated[idx] = shipment;
+    } else {
+      updated = [shipment, ...current];
+    }
+    setStorageItem('shipments', updated);
+    return updated;
+  },
+  updateShipmentStatus: async (id: string, newStatus: LogisticsShipment['currentStatus']): Promise<LogisticsShipment[]> => {
+    const current = await DataService.getShipments();
+    const updated = current.map(s => {
+      if (s.id === id) {
+        return {
+          ...s,
+          currentStatus: newStatus,
+          actualDeliveryDate: newStatus === 'Delivered' ? new Date().toISOString().split('T')[0] : s.actualDeliveryDate,
+          deliveryOtpVerified: newStatus === 'Delivered' ? true : s.deliveryOtpVerified
+        };
+      }
+      return s;
+    });
+    setStorageItem('shipments', updated);
+    return updated;
   }
 };
 

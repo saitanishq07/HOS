@@ -75,18 +75,18 @@ export const CustomersManager: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="font-serif text-2xl font-bold text-white tracking-wide flex items-center gap-2">
+          <h1 className="font-serif text-2xl font-bold text-slate-900 tracking-wide flex items-center gap-2">
             <Users className="w-6 h-6 text-[#0442A5]" />
             <span>Client & Buyer Profiles</span>
           </h1>
-          <p className="text-xs text-neutral-400 mt-1">
+          <p className="text-xs text-slate-500 mt-1">
             Registered corporate buyers, art collectors, and GST billing records.
           </p>
         </div>
 
         <button
           onClick={handleOpenAdd}
-          className="px-4 py-2.5 rounded-xl bg-[#0442A5] hover:bg-[#0553d1] text-white text-xs font-semibold shadow-lg flex items-center space-x-2 transition-all"
+          className="px-4 py-2.5 rounded-xl bg-[#0442A5] hover:bg-[#033585] text-white text-xs font-semibold shadow-xs flex items-center space-x-2 transition-all transform hover:scale-[1.01]"
         >
           <Plus className="w-4 h-4" />
           <span>Add New Client</span>
@@ -94,15 +94,15 @@ export const CustomersManager: React.FC = () => {
       </div>
 
       {/* Search Bar */}
-      <div className="bg-[#161922] p-4 rounded-2xl border border-neutral-800">
+      <div className="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs">
         <div className="relative w-full">
-          <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-400" />
+          <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
           <input
             type="text"
             placeholder="Search clients by name, phone number, or GSTIN..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 bg-[#0D1117] border border-neutral-700/80 rounded-xl text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-[#0442A5]"
+            className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
           />
         </div>
       </div>
@@ -110,21 +110,21 @@ export const CustomersManager: React.FC = () => {
       {/* Customer Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
         {filteredCustomers.map((cust) => (
-          <div key={cust.id} className="bg-[#161922] border border-neutral-800 rounded-2xl p-5 shadow-lg space-y-4 flex flex-col justify-between">
+          <div key={cust.id} className="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs space-y-4 flex flex-col justify-between hover:shadow-md transition-shadow">
             <div>
               <div className="flex items-start justify-between">
                 <div>
-                  <h3 className="font-bold text-base text-white">{cust.name}</h3>
-                  <p className="text-xs text-[#D4AF37] font-mono font-semibold mt-0.5">
+                  <h3 className="font-bold text-base text-slate-900">{cust.name}</h3>
+                  <p className="text-xs text-amber-800 font-mono font-semibold mt-0.5">
                     GSTIN: {cust.gstin || 'URP (Unregistered)'}
                   </p>
                 </div>
-                <div className="p-2.5 bg-[#0442A5]/20 text-[#CDEBFF] rounded-xl font-bold text-xs">
+                <div className="px-2.5 py-1 bg-indigo-50 text-indigo-900 border border-indigo-200/70 rounded-xl font-semibold text-xs">
                   {cust.totalInvoices || 0} Invoices
                 </div>
               </div>
 
-              <div className="mt-4 space-y-2 text-xs text-neutral-300">
+              <div className="mt-4 space-y-2 text-xs text-slate-600">
                 <div className="flex items-center space-x-2">
                   <Phone className="w-3.5 h-3.5 text-[#0442A5]" />
                   <span>{cust.phone}</span>
@@ -140,10 +140,10 @@ export const CustomersManager: React.FC = () => {
               </div>
             </div>
 
-            <div className="pt-4 border-t border-neutral-800 flex items-center justify-between">
+            <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
               <div>
-                <p className="text-[10px] text-neutral-400 uppercase font-semibold">Total Lifetime Billed</p>
-                <p className="text-sm font-bold text-emerald-400">₹{(cust.totalSpent || 0).toLocaleString('en-IN')}</p>
+                <p className="text-[10px] text-slate-400 uppercase font-semibold">Total Lifetime Billed</p>
+                <p className="text-sm font-bold text-emerald-700">₹{(cust.totalSpent || 0).toLocaleString('en-IN')}</p>
               </div>
 
               <button
@@ -151,7 +151,7 @@ export const CustomersManager: React.FC = () => {
                   setEditingCustomer(cust);
                   setIsModalOpen(true);
                 }}
-                className="p-2 bg-neutral-800 hover:bg-[#0442A5] text-neutral-300 hover:text-white rounded-lg transition-colors"
+                className="p-2 bg-slate-100 hover:bg-indigo-50 text-slate-700 hover:text-indigo-900 border border-slate-200/60 rounded-lg transition-colors"
               >
                 <Edit3 className="w-4 h-4" />
               </button>
@@ -162,84 +162,84 @@ export const CustomersManager: React.FC = () => {
 
       {/* Edit/Add Modal */}
       {isModalOpen && editingCustomer && (
-        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-          <form onSubmit={handleSaveCustomer} className="bg-[#141822] border border-neutral-700 w-full max-w-lg rounded-2xl p-6 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between border-b border-neutral-800 pb-4">
-              <h3 className="font-serif text-lg font-bold text-white">
+        <div className="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4">
+          <form onSubmit={handleSaveCustomer} className="bg-white border border-slate-200/90 w-full max-w-lg rounded-2xl p-6 space-y-4 shadow-2xl text-slate-800">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-4">
+              <h3 className="font-serif text-lg font-bold text-slate-900">
                 {editingCustomer.id ? 'Edit Client Profile' : 'Register New Client'}
               </h3>
-              <button type="button" onClick={() => setIsModalOpen(false)} className="text-neutral-400 hover:text-white">
+              <button type="button" onClick={() => setIsModalOpen(false)} className="text-slate-400 hover:text-slate-700">
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             <div className="space-y-3 text-xs">
               <div>
-                <label className="block text-neutral-400 mb-1">Full Name / Corporate Title *</label>
+                <label className="block text-slate-600 font-medium mb-1">Full Name / Corporate Title *</label>
                 <input
                   type="text"
                   value={editingCustomer.name || ''}
                   onChange={(e) => setEditingCustomer({ ...editingCustomer, name: e.target.value })}
-                  className="w-full px-3 py-2 bg-[#0D1117] border border-neutral-700 rounded-xl text-white"
+                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
                   required
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-neutral-400 mb-1">Phone Number *</label>
+                  <label className="block text-slate-600 font-medium mb-1">Phone Number *</label>
                   <input
                     type="text"
                     value={editingCustomer.phone || ''}
                     onChange={(e) => setEditingCustomer({ ...editingCustomer, phone: e.target.value })}
-                    className="w-full px-3 py-2 bg-[#0D1117] border border-neutral-700 rounded-xl text-white"
+                    className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-neutral-400 mb-1">Email</label>
+                  <label className="block text-slate-600 font-medium mb-1">Email</label>
                   <input
                     type="email"
                     value={editingCustomer.email || ''}
                     onChange={(e) => setEditingCustomer({ ...editingCustomer, email: e.target.value })}
-                    className="w-full px-3 py-2 bg-[#0D1117] border border-neutral-700 rounded-xl text-white"
+                    className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-neutral-400 mb-1">GSTIN Number</label>
+                <label className="block text-slate-600 font-medium mb-1">GSTIN Number</label>
                 <input
                   type="text"
                   value={editingCustomer.gstin || ''}
                   onChange={(e) => setEditingCustomer({ ...editingCustomer, gstin: e.target.value })}
-                  className="w-full px-3 py-2 bg-[#0D1117] border border-neutral-700 rounded-xl text-white font-mono"
+                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 font-mono focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
                   placeholder="36AAAAA0000A1Z5"
                 />
               </div>
 
               <div>
-                <label className="block text-neutral-400 mb-1">Street Address</label>
+                <label className="block text-slate-600 font-medium mb-1">Street Address</label>
                 <input
                   type="text"
                   value={editingCustomer.address || ''}
                   onChange={(e) => setEditingCustomer({ ...editingCustomer, address: e.target.value })}
-                  className="w-full px-3 py-2 bg-[#0D1117] border border-neutral-700 rounded-xl text-white"
+                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
                 />
               </div>
             </div>
 
-            <div className="flex justify-end space-x-3 pt-4 border-t border-neutral-800">
+            <div className="flex justify-end space-x-3 pt-4 border-t border-slate-100">
               <button
                 type="button"
                 onClick={() => setIsModalOpen(false)}
-                className="px-4 py-2 bg-neutral-800 text-neutral-300 rounded-xl text-xs font-semibold"
+                className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-medium transition-colors"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="px-5 py-2 bg-[#0442A5] hover:bg-[#0553d1] text-white rounded-xl text-xs font-semibold"
+                className="px-5 py-2 bg-[#0442A5] hover:bg-[#033585] text-white rounded-xl text-xs font-medium shadow-xs transition-all"
               >
                 Save Client
               </button>

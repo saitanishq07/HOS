@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { Invoice } from '../../types';
 import { dbService, getImageUrl } from '../../services/db';
-import { Printer, Download, Share2, X, CheckCircle, CreditCard, Sparkles, Building2, Phone, Mail } from 'lucide-react';
+import { Printer, Download, Share2, X, CheckCircle, CreditCard, Sparkles, Building2, Phone, Mail, Save, Eye, FileText } from 'lucide-react';
 
 interface Props {
   invoice: Invoice;
   onClose: () => void;
-  onRefresh: () => void;
+  onRefresh?: () => void;
+  isPreview?: boolean;
+  onSave?: () => void;
 }
 
-export const InvoiceViewModal: React.FC<Props> = ({ invoice, onClose, onRefresh }) => {
+export const InvoiceViewModal: React.FC<Props> = ({ invoice, onClose, onRefresh, isPreview = false, onSave }) => {
   const [paymentAmount, setPaymentAmount] = useState<number>(invoice.balanceDue);
   const [paymentMode, setPaymentMode] = useState<string>('Bank Transfer');
   const [paymentRef, setPaymentRef] = useState<string>('');
@@ -39,7 +41,7 @@ export const InvoiceViewModal: React.FC<Props> = ({ invoice, onClose, onRefresh 
         notes: 'Recorded via Invoice Inspector'
       });
       setIsLoggingPayment(false);
-      onRefresh();
+      onRefresh?.();
       onClose();
     } catch (err: any) {
       setError(err.message || 'Error recording payment.');
@@ -49,80 +51,123 @@ export const InvoiceViewModal: React.FC<Props> = ({ invoice, onClose, onRefresh 
   const whatsappMessage = `Hello ${invoice.customerName},\n\nHere is your Tax Invoice breakdown from *House of Seetah*:\n\n*Invoice No:* ${invoice.invoiceNumber}\n*Grand Total:* ₹${invoice.grandTotal.toLocaleString('en-IN')}\n*Amount Paid:* ₹${invoice.amountPaid.toLocaleString('en-IN')}\n*Balance Due:* ₹${invoice.balanceDue.toLocaleString('en-IN')}\n\nThank you for choosing House of Seetah!`;
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto font-sans">
-      <div className="bg-[#141822] border border-neutral-700 w-full max-w-4xl rounded-2xl shadow-2xl overflow-hidden my-8 flex flex-col max-h-[90vh]">
+    <div className="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto font-sans">
+      <div className="bg-white border border-slate-200/90 w-full max-w-4xl rounded-2xl shadow-2xl overflow-hidden my-8 flex flex-col max-h-[90vh]">
         {/* Modal Action Bar (Screen Only) */}
-        <div className="bg-[#1D2230] px-6 py-4 border-b border-neutral-700 flex items-center justify-between shrink-0 print:hidden">
+        <div className="bg-slate-50/90 px-6 py-4 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3 shrink-0 print:hidden">
           <div className="flex items-center space-x-3">
-            <span className="font-mono text-xs font-bold text-[#CDEBFF] bg-[#0442A5]/40 px-2.5 py-1 rounded-md border border-[#0442A5]/60">
+            <span className="font-mono text-xs font-bold text-indigo-950 bg-indigo-50 px-2.5 py-1 rounded-md border border-indigo-200/70">
               {invoice.invoiceNumber}
             </span>
-            <span className={`px-2.5 py-1 text-xs font-bold rounded-md ${
-              invoice.status === 'PAID' ? 'bg-emerald-500/20 text-emerald-400' :
-              invoice.status === 'PARTIAL' ? 'bg-amber-500/20 text-amber-400' : 'bg-red-500/20 text-red-400'
-            }`}>
-              {invoice.status}
-            </span>
+            {isPreview ? (
+              <span className="px-2.5 py-1 text-xs font-semibold rounded-md border bg-indigo-50 text-indigo-700 border-indigo-200/80 flex items-center gap-1.5 shadow-2xs">
+                <Eye className="w-3.5 h-3.5" />
+                <span>Real-Time Draft Preview</span>
+              </span>
+            ) : (
+              <span className={`px-2.5 py-1 text-xs font-semibold rounded-md border ${
+                invoice.status === 'PAID' ? 'bg-emerald-50 text-emerald-700 border-emerald-200/70' :
+                invoice.status === 'PARTIAL' ? 'bg-amber-50 text-amber-700 border-amber-200/70' : 'bg-rose-50 text-rose-700 border-rose-200/70'
+              }`}>
+                {invoice.status}
+              </span>
+            )}
           </div>
 
           <div className="flex items-center space-x-2">
-            {invoice.balanceDue > 0 && (
+            {isPreview && onSave && (
               <button
+                type="button"
+                onClick={onSave}
+                className="px-4 py-2 rounded-xl bg-[#0442A5] hover:bg-[#033585] text-white text-xs font-semibold flex items-center space-x-2 transition-all shadow-xs"
+              >
+                <Save className="w-3.5 h-3.5" />
+                <span>Save & Issue Tax Invoice</span>
+              </button>
+            )}
+
+            {!isPreview && invoice.balanceDue > 0 && (
+              <button
+                type="button"
                 onClick={() => setIsLoggingPayment(!isLoggingPayment)}
-                className="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold flex items-center space-x-1.5 transition-colors"
+                className="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-medium flex items-center space-x-1.5 transition-colors shadow-xs"
               >
                 <CreditCard className="w-3.5 h-3.5" />
                 <span>Record Payment</span>
               </button>
             )}
 
-            <a
-              href={`https://wa.me/${invoice.customerPhone?.replace(/\D/g, '')}?text=${encodeURIComponent(whatsappMessage)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-3 py-1.5 rounded-lg bg-emerald-700/40 hover:bg-emerald-700/60 border border-emerald-500/40 text-emerald-300 text-xs font-semibold flex items-center space-x-1.5 transition-colors"
-            >
-              <Share2 className="w-3.5 h-3.5" />
-              <span>Share WhatsApp</span>
-            </a>
+            {!isPreview && (
+              <a
+                href={`https://wa.me/${invoice.customerPhone?.replace(/\D/g, '')}?text=${encodeURIComponent(whatsappMessage)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3.5 py-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-200/80 text-emerald-800 text-xs font-medium flex items-center space-x-1.5 transition-colors"
+              >
+                <Share2 className="w-3.5 h-3.5 text-emerald-600" />
+                <span>Share WhatsApp</span>
+              </a>
+            )}
 
             <button
+              type="button"
               onClick={handlePrint}
-              className="px-3 py-1.5 rounded-lg bg-[#0442A5] hover:bg-[#0553d1] text-white text-xs font-semibold flex items-center space-x-1.5 transition-colors"
+              className="px-3.5 py-2 rounded-xl bg-white hover:bg-slate-100 text-slate-700 text-xs font-medium flex items-center space-x-1.5 transition-colors border border-slate-200/90 shadow-2xs"
             >
-              <Printer className="w-3.5 h-3.5" />
+              <Printer className="w-3.5 h-3.5 text-[#0442A5]" />
               <span>Print A4 Invoice</span>
             </button>
 
             <button
+              type="button"
               onClick={onClose}
-              className="p-1.5 text-neutral-400 hover:text-white rounded-lg hover:bg-neutral-800 transition-colors"
+              className="p-2 text-slate-400 hover:text-slate-700 rounded-xl hover:bg-slate-200/60 transition-colors"
+              title="Close Preview"
             >
               <X className="w-5 h-5" />
             </button>
           </div>
         </div>
 
+        {/* Live Preview Info Banner */}
+        {isPreview && (
+          <div className="bg-gradient-to-r from-indigo-50/90 via-sky-50/70 to-indigo-50/90 border-b border-indigo-100/90 px-6 py-2.5 flex items-center justify-between text-xs text-indigo-950 print:hidden">
+            <div className="flex items-center space-x-2">
+              <Sparkles className="w-4 h-4 text-indigo-600 shrink-0" />
+              <span>
+                <strong>Live Commercial Tax Invoice Preview:</strong> Reviewing authentic A4 layout, HSN codes, and GST breakdown. Ready to print or issue.
+              </span>
+            </div>
+            <button
+              type="button"
+              onClick={onClose}
+              className="text-[11px] font-semibold text-indigo-700 hover:text-indigo-900 underline ml-4 shrink-0"
+            >
+              Back to Form
+            </button>
+          </div>
+        )}
+
         {/* Payment Form Dropdown */}
         {isLoggingPayment && (
-          <form onSubmit={handleRecordPayment} className="p-4 bg-[#0D1117] border-b border-neutral-700 grid grid-cols-1 sm:grid-cols-4 gap-3 text-xs print:hidden">
+          <form onSubmit={handleRecordPayment} className="p-4 bg-slate-50 border-b border-slate-200 grid grid-cols-1 sm:grid-cols-4 gap-3 text-xs print:hidden">
             <div>
-              <label className="block text-neutral-400 font-medium mb-1">Amount to Collect (₹)</label>
+              <label className="block text-slate-600 font-medium mb-1">Amount to Collect (₹)</label>
               <input
                 type="number"
                 value={paymentAmount}
                 onChange={(e) => setPaymentAmount(Number(e.target.value))}
                 max={invoice.balanceDue}
-                className="w-full px-3 py-1.5 bg-[#141822] border border-neutral-700 rounded-lg text-white"
+                className="w-full px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
                 required
               />
             </div>
             <div>
-              <label className="block text-neutral-400 font-medium mb-1">Payment Mode</label>
+              <label className="block text-slate-600 font-medium mb-1">Payment Mode</label>
               <select
                 value={paymentMode}
                 onChange={(e) => setPaymentMode(e.target.value)}
-                className="w-full px-3 py-1.5 bg-[#141822] border border-neutral-700 rounded-lg text-white"
+                className="w-full px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
               >
                 <option value="Bank Transfer">Bank Transfer / NEFT / RTGS</option>
                 <option value="UPI">UPI / GPay / PhonePe</option>
@@ -132,26 +177,26 @@ export const InvoiceViewModal: React.FC<Props> = ({ invoice, onClose, onRefresh 
               </select>
             </div>
             <div>
-              <label className="block text-neutral-400 font-medium mb-1">Transaction Ref #</label>
+              <label className="block text-slate-600 font-medium mb-1">Transaction Ref #</label>
               <input
                 type="text"
                 placeholder="e.g. UTR / Chq / Txn ID"
                 value={paymentRef}
                 onChange={(e) => setPaymentRef(e.target.value)}
-                className="w-full px-3 py-1.5 bg-[#141822] border border-neutral-700 rounded-lg text-white"
+                className="w-full px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
               />
             </div>
             <div className="flex items-end space-x-2">
               <button
                 type="submit"
-                className="flex-1 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold transition-colors"
+                className="flex-1 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-medium transition-colors shadow-xs"
               >
                 Confirm Receipt
               </button>
               <button
                 type="button"
                 onClick={() => setIsLoggingPayment(false)}
-                className="px-3 py-1.5 bg-neutral-800 text-neutral-300 rounded-lg"
+                className="px-3 py-1.5 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-lg font-medium transition-colors"
               >
                 Cancel
               </button>
@@ -230,29 +275,46 @@ export const InvoiceViewModal: React.FC<Props> = ({ invoice, onClose, onRefresh 
                   <th className="p-2.5 border border-[#0442A5] text-center">Qty</th>
                   <th className="p-2.5 border border-[#0442A5] text-right">Rate (₹)</th>
                   <th className="p-2.5 border border-[#0442A5] text-right">Taxable (₹)</th>
-                  <th className="p-2.5 border border-[#0442A5] text-right">CGST</th>
-                  <th className="p-2.5 border border-[#0442A5] text-right">SGST</th>
+                  {invoice.items.some(i => (i.igstAmount || 0) > 0 || (i.igstRate || 0) > 0) ? (
+                    <th className="p-2.5 border border-[#0442A5] text-right">IGST</th>
+                  ) : (
+                    <>
+                      <th className="p-2.5 border border-[#0442A5] text-right">CGST</th>
+                      <th className="p-2.5 border border-[#0442A5] text-right">SGST</th>
+                    </>
+                  )}
                   <th className="p-2.5 border border-[#0442A5] text-right">Total (₹)</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-neutral-200 border border-neutral-300">
-                {invoice.items.map((item, index) => (
-                  <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-neutral-50/50'}>
-                    <td className="p-2.5 border border-neutral-200 text-center font-semibold">{index + 1}</td>
-                    <td className="p-2.5 border border-neutral-200 font-semibold text-neutral-900">{item.productTitle || item.productName || ''}</td>
-                    <td className="p-2.5 border border-neutral-200 text-neutral-600 font-mono">{item.hsnCode || '9701'}</td>
-                    <td className="p-2.5 border border-neutral-200 text-center font-bold">{item.quantity}</td>
-                    <td className="p-2.5 border border-neutral-200 text-right">₹{item.unitPrice.toLocaleString('en-IN')}</td>
-                    <td className="p-2.5 border border-neutral-200 text-right font-semibold">₹{(item.taxableAmount || item.subtotal || 0).toLocaleString('en-IN')}</td>
-                    <td className="p-2.5 border border-neutral-200 text-right text-neutral-600 font-mono">
-                      {(item.cgstRate || 0) > 0 ? `₹${(item.cgstAmount || 0).toLocaleString('en-IN')} (${item.cgstRate}%)` : '-'}
-                    </td>
-                    <td className="p-2.5 border border-neutral-200 text-right text-neutral-600 font-mono">
-                      {(item.sgstRate || 0) > 0 ? `₹${(item.sgstAmount || 0).toLocaleString('en-IN')} (${item.sgstRate}%)` : '-'}
-                    </td>
-                    <td className="p-2.5 border border-neutral-200 text-right font-bold text-neutral-900">₹{(item.totalAmount || item.total || 0).toLocaleString('en-IN')}</td>
-                  </tr>
-                ))}
+                {invoice.items.map((item, index) => {
+                  const hasIgst = (item.igstAmount || 0) > 0 || (item.igstRate || 0) > 0;
+                  return (
+                    <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-neutral-50/50'}>
+                      <td className="p-2.5 border border-neutral-200 text-center font-semibold">{index + 1}</td>
+                      <td className="p-2.5 border border-neutral-200 font-semibold text-neutral-900">{item.productTitle || item.productName || 'Heritage Art Piece'}</td>
+                      <td className="p-2.5 border border-neutral-200 text-neutral-600 font-mono">{item.hsnCode || '9701'}</td>
+                      <td className="p-2.5 border border-neutral-200 text-center font-bold">{item.quantity}</td>
+                      <td className="p-2.5 border border-neutral-200 text-right">₹{item.unitPrice.toLocaleString('en-IN')}</td>
+                      <td className="p-2.5 border border-neutral-200 text-right font-semibold">₹{(item.taxableAmount || item.subtotal || 0).toLocaleString('en-IN')}</td>
+                      {hasIgst ? (
+                        <td className="p-2.5 border border-neutral-200 text-right text-neutral-600 font-mono">
+                          {(item.igstAmount || 0) > 0 ? `₹${(item.igstAmount || 0).toLocaleString('en-IN')} (${item.igstRate || item.taxRate || 12}%)` : '-'}
+                        </td>
+                      ) : (
+                        <>
+                          <td className="p-2.5 border border-neutral-200 text-right text-neutral-600 font-mono">
+                            {(item.cgstRate || 0) > 0 ? `₹${(item.cgstAmount || 0).toLocaleString('en-IN')} (${item.cgstRate}%)` : '-'}
+                          </td>
+                          <td className="p-2.5 border border-neutral-200 text-right text-neutral-600 font-mono">
+                            {(item.sgstRate || 0) > 0 ? `₹${(item.sgstAmount || 0).toLocaleString('en-IN')} (${item.sgstRate}%)` : '-'}
+                          </td>
+                        </>
+                      )}
+                      <td className="p-2.5 border border-neutral-200 text-right font-bold text-neutral-900">₹{(item.totalAmount || item.total || 0).toLocaleString('en-IN')}</td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
@@ -274,7 +336,7 @@ export const InvoiceViewModal: React.FC<Props> = ({ invoice, onClose, onRefresh 
                 <span className="font-semibold">₹{invoice.subtotal.toLocaleString('en-IN')}</span>
               </div>
               <div className="flex justify-between text-neutral-600">
-                <span>Total Tax (CGST + SGST / IGST):</span>
+                <span>Total Tax (GST Split):</span>
                 <span className="font-semibold">₹{(invoice.totalTax || invoice.totalGst || 0).toLocaleString('en-IN')}</span>
               </div>
               {(invoice.discountAmount || invoice.totalDiscount || 0) > 0 && (

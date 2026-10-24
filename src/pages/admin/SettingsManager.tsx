@@ -24,129 +24,129 @@ export const SettingsManager: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="font-serif text-2xl font-bold text-white tracking-wide flex items-center gap-2">
+          <h1 className="font-serif text-2xl font-bold text-slate-900 tracking-wide flex items-center gap-2">
             <Settings className="w-6 h-6 text-[#0442A5]" />
             <span>Commercial & Invoice Settings</span>
           </h1>
-          <p className="text-xs text-neutral-400 mt-1">
+          <p className="text-xs text-slate-500 mt-1">
             Configure official GST legal credentials, print defaults, and bank settlement details.
           </p>
         </div>
 
         <button
           type="submit"
-          className="px-5 py-2.5 rounded-xl bg-[#0442A5] hover:bg-[#0553d1] text-white text-xs font-semibold shadow-lg flex items-center space-x-2 transition-all"
+          className="px-5 py-2.5 rounded-xl bg-[#0442A5] hover:bg-[#033585] text-white text-xs font-semibold shadow-xs flex items-center space-x-2 transition-all transform hover:scale-[1.01]"
         >
-          {isSaved ? <Check className="w-4 h-4 text-emerald-400" /> : <Save className="w-4 h-4" />}
+          {isSaved ? <Check className="w-4 h-4 text-emerald-300" /> : <Save className="w-4 h-4" />}
           <span>{isSaved ? 'Settings Saved!' : 'Save Business Settings'}</span>
         </button>
       </div>
 
       {/* Business Details */}
-      <div className="bg-[#161922] border border-neutral-800 rounded-2xl p-6 shadow-xl space-y-4">
-        <h2 className="text-base font-serif font-bold text-white border-b border-neutral-800 pb-3 flex items-center gap-2">
+      <div className="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-xs space-y-4">
+        <h2 className="text-base font-serif font-bold text-slate-900 border-b border-slate-100 pb-3 flex items-center gap-2">
           <Building2 className="w-5 h-5 text-[#0442A5]" />
           <span>Legal Enterprise Information</span>
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
           <div>
-            <label className="block text-neutral-400 mb-1">Registered Business Name</label>
+            <label className="block text-slate-600 font-medium mb-1">Registered Business Name</label>
             <input
               type="text"
               value={businessName}
               onChange={(e) => setBusinessName(e.target.value)}
-              className="w-full px-3 py-2 bg-[#0D1117] border border-neutral-700 rounded-xl text-white font-bold"
+              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 font-bold focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
             />
           </div>
 
           <div>
-            <label className="block text-neutral-400 mb-1">GSTIN Number *</label>
+            <label className="block text-slate-600 font-medium mb-1">GSTIN Number *</label>
             <input
               type="text"
               value={gstin}
               onChange={(e) => setGstin(e.target.value)}
-              className="w-full px-3 py-2 bg-[#0D1117] border border-neutral-700 rounded-xl text-white font-mono font-bold"
+              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 font-mono font-bold focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
             />
           </div>
 
           <div className="md:col-span-2">
-            <label className="block text-neutral-400 mb-1">Official Address</label>
+            <label className="block text-slate-600 font-medium mb-1">Official Address</label>
             <input
               type="text"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
-              className="w-full px-3 py-2 bg-[#0D1117] border border-neutral-700 rounded-xl text-white"
+              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
             />
           </div>
 
           <div>
-            <label className="block text-neutral-400 mb-1">Official Phone</label>
+            <label className="block text-slate-600 font-medium mb-1">Official Phone</label>
             <input
               type="text"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              className="w-full px-3 py-2 bg-[#0D1117] border border-neutral-700 rounded-xl text-white"
+              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
             />
           </div>
 
           <div>
-            <label className="block text-neutral-400 mb-1">Support Email</label>
+            <label className="block text-slate-600 font-medium mb-1">Support Email</label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-3 py-2 bg-[#0D1117] border border-neutral-700 rounded-xl text-white"
+              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
             />
           </div>
         </div>
       </div>
 
       {/* Bank Account Details */}
-      <div className="bg-[#161922] border border-neutral-800 rounded-2xl p-6 shadow-xl space-y-4">
-        <h2 className="text-base font-serif font-bold text-white border-b border-neutral-800 pb-3 flex items-center gap-2">
-          <CreditCard className="w-5 h-5 text-emerald-400" />
+      <div className="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-xs space-y-4">
+        <h2 className="text-base font-serif font-bold text-slate-900 border-b border-slate-100 pb-3 flex items-center gap-2">
+          <CreditCard className="w-5 h-5 text-emerald-600" />
           <span>Bank Payment Settlement Details</span>
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
           <div>
-            <label className="block text-neutral-400 mb-1">Bank Name</label>
+            <label className="block text-slate-600 font-medium mb-1">Bank Name</label>
             <input
               type="text"
               value={bankName}
               onChange={(e) => setBankName(e.target.value)}
-              className="w-full px-3 py-2 bg-[#0D1117] border border-neutral-700 rounded-xl text-white"
+              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
             />
           </div>
 
           <div>
-            <label className="block text-neutral-400 mb-1">Account Number</label>
+            <label className="block text-slate-600 font-medium mb-1">Account Number</label>
             <input
               type="text"
               value={accountNo}
               onChange={(e) => setAccountNo(e.target.value)}
-              className="w-full px-3 py-2 bg-[#0D1117] border border-neutral-700 rounded-xl text-white font-mono"
+              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 font-mono focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
             />
           </div>
 
           <div>
-            <label className="block text-neutral-400 mb-1">IFSC Code</label>
+            <label className="block text-slate-600 font-medium mb-1">IFSC Code</label>
             <input
               type="text"
               value={ifsc}
               onChange={(e) => setIfsc(e.target.value)}
-              className="w-full px-3 py-2 bg-[#0D1117] border border-neutral-700 rounded-xl text-white font-mono"
+              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 font-mono focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
             />
           </div>
 
           <div>
-            <label className="block text-neutral-400 mb-1">Corporate UPI ID</label>
+            <label className="block text-slate-600 font-medium mb-1">Corporate UPI ID</label>
             <input
               type="text"
               value={upi}
               onChange={(e) => setUpi(e.target.value)}
-              className="w-full px-3 py-2 bg-[#0D1117] border border-neutral-700 rounded-xl text-white font-mono text-emerald-400"
+              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-emerald-700 font-mono font-semibold focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
             />
           </div>
         </div>

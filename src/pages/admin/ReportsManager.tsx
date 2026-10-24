@@ -90,18 +90,18 @@ export const ReportsManager: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="font-serif text-2xl font-bold text-white tracking-wide flex items-center gap-2">
-            <BarChart3 className="w-6 h-6 text-[#D4AF37]" />
+          <h1 className="font-serif text-2xl font-bold text-slate-900 tracking-wide flex items-center gap-2">
+            <BarChart3 className="w-6 h-6 text-[#0442A5]" />
             <span>GST Compliance & Financial Audits</span>
           </h1>
-          <p className="text-xs text-neutral-400 mt-1">
+          <p className="text-xs text-slate-500 mt-1">
             GSTR-1 tax return preparation, intrastate vs interstate tax split, and commercial audit exports.
           </p>
         </div>
 
         <button
           onClick={exportGstReport}
-          className="px-4 py-2.5 rounded-xl bg-[#0442A5] hover:bg-[#0553d1] text-white text-xs font-semibold shadow-lg shadow-[#0442A5]/30 flex items-center space-x-2 transition-all"
+          className="px-4 py-2.5 rounded-xl bg-[#0442A5] hover:bg-[#033585] text-white text-xs font-semibold shadow-xs flex items-center space-x-2 transition-all transform hover:scale-[1.01]"
         >
           <Download className="w-4 h-4" />
           <span>Export GSTR-1 Audit CSV</span>
@@ -110,41 +110,41 @@ export const ReportsManager: React.FC = () => {
 
       {/* Tax Breakdown Summary Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        <div className="bg-[#161922] border border-neutral-800 p-5 rounded-2xl shadow-lg">
-          <p className="text-xs text-neutral-400 uppercase font-semibold">Total Taxable Value</p>
-          <h3 className="text-2xl font-serif font-bold text-white mt-1">₹{totalTaxable.toLocaleString('en-IN')}</h3>
-          <p className="text-[11px] text-neutral-500 mt-2">Net Sales Before GST</p>
+        <div className="bg-white border border-slate-200/80 p-5 rounded-2xl shadow-xs">
+          <p className="text-xs text-slate-500 uppercase font-semibold">Total Taxable Value</p>
+          <h3 className="text-2xl font-serif font-bold text-slate-900 mt-1">₹{totalTaxable.toLocaleString('en-IN')}</h3>
+          <p className="text-[11px] text-slate-400 mt-2">Net Sales Before GST</p>
         </div>
 
-        <div className="bg-[#161922] border border-neutral-800 p-5 rounded-2xl shadow-lg">
-          <p className="text-xs text-neutral-400 uppercase font-semibold">Central GST (CGST)</p>
-          <h3 className="text-2xl font-serif font-bold text-[#CDEBFF] mt-1">₹{cgstTotal.toLocaleString('en-IN')}</h3>
-          <p className="text-[11px] text-neutral-500 mt-2">Telangana Intrastate Share</p>
+        <div className="bg-white border border-slate-200/80 p-5 rounded-2xl shadow-xs">
+          <p className="text-xs text-slate-500 uppercase font-semibold">Central GST (CGST)</p>
+          <h3 className="text-2xl font-serif font-bold text-indigo-900 mt-1">₹{cgstTotal.toLocaleString('en-IN')}</h3>
+          <p className="text-[11px] text-slate-400 mt-2">Telangana Intrastate Share</p>
         </div>
 
-        <div className="bg-[#161922] border border-neutral-800 p-5 rounded-2xl shadow-lg">
-          <p className="text-xs text-neutral-400 uppercase font-semibold">State GST (SGST)</p>
-          <h3 className="text-2xl font-serif font-bold text-[#CDEBFF] mt-1">₹{sgstTotal.toLocaleString('en-IN')}</h3>
-          <p className="text-[11px] text-neutral-500 mt-2">State Treasury Share</p>
+        <div className="bg-white border border-slate-200/80 p-5 rounded-2xl shadow-xs">
+          <p className="text-xs text-slate-500 uppercase font-semibold">State GST (SGST)</p>
+          <h3 className="text-2xl font-serif font-bold text-indigo-900 mt-1">₹{sgstTotal.toLocaleString('en-IN')}</h3>
+          <p className="text-[11px] text-slate-400 mt-2">State Treasury Share</p>
         </div>
 
-        <div className="bg-[#161922] border border-neutral-800 p-5 rounded-2xl shadow-lg">
-          <p className="text-xs text-neutral-400 uppercase font-semibold">Integrated GST (IGST)</p>
-          <h3 className="text-2xl font-serif font-bold text-[#D4AF37] mt-1">₹{igstTotal.toLocaleString('en-IN')}</h3>
-          <p className="text-[11px] text-neutral-500 mt-2">Interstate Supply Share</p>
+        <div className="bg-white border border-slate-200/80 p-5 rounded-2xl shadow-xs">
+          <p className="text-xs text-slate-500 uppercase font-semibold">Integrated GST (IGST)</p>
+          <h3 className="text-2xl font-serif font-bold text-amber-800 mt-1">₹{igstTotal.toLocaleString('en-IN')}</h3>
+          <p className="text-[11px] text-slate-400 mt-2">Interstate Supply Share</p>
         </div>
       </div>
 
       {/* Audit Table */}
-      <div className="bg-[#161922] border border-neutral-800 rounded-2xl overflow-hidden shadow-xl">
-        <div className="p-4 border-b border-neutral-800 flex items-center justify-between">
-          <h3 className="font-serif text-lg font-bold text-white">GSTR-1 Tax Filing Ledger</h3>
-          <span className="text-xs text-neutral-400">GSTIN: 36AABCH9988K1Z5</span>
+      <div className="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-xs">
+        <div className="p-4 border-b border-slate-100 flex items-center justify-between">
+          <h3 className="font-serif text-lg font-bold text-slate-900">GSTR-1 Tax Filing Ledger</h3>
+          <span className="text-xs text-slate-500 font-mono">GSTIN: 36AABCH9988K1Z5</span>
         </div>
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-[#0D1117] text-neutral-400 uppercase tracking-wider font-semibold border-b border-neutral-800">
+            <thead className="bg-slate-50/80 text-slate-500 uppercase tracking-wider font-semibold border-b border-slate-200">
               <tr>
                 <th className="py-3 px-4">Invoice #</th>
                 <th className="py-3 px-4">Date</th>
@@ -157,7 +157,7 @@ export const ReportsManager: React.FC = () => {
                 <th className="py-3 px-4 text-right">Invoice Total (₹)</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-neutral-800 text-neutral-200">
+            <tbody className="divide-y divide-slate-100 text-slate-700">
               {invoices.map((inv) => {
                 let cgst = 0, sgst = 0, igst = 0;
                 inv.items.forEach(it => {
@@ -166,16 +166,16 @@ export const ReportsManager: React.FC = () => {
                   igst += it.igstAmount || 0;
                 });
                 return (
-                  <tr key={inv.id} className="hover:bg-[#1D2230] transition-colors">
-                    <td className="py-3.5 px-4 font-mono font-bold text-[#CDEBFF]">{inv.invoiceNumber}</td>
-                    <td className="py-3.5 px-4 text-neutral-400">{inv.issueDate}</td>
-                    <td className="py-3.5 px-4 font-semibold text-white">{inv.customerName}</td>
-                    <td className="py-3.5 px-4 text-neutral-400">{inv.placeOfSupply || 'Intrastate'}</td>
+                  <tr key={inv.id} className="hover:bg-slate-50/70 transition-colors">
+                    <td className="py-3.5 px-4 font-mono font-bold text-indigo-950">{inv.invoiceNumber}</td>
+                    <td className="py-3.5 px-4 text-slate-500">{inv.issueDate}</td>
+                    <td className="py-3.5 px-4 font-semibold text-slate-900">{inv.customerName}</td>
+                    <td className="py-3.5 px-4 text-slate-500">{inv.placeOfSupply || 'Intrastate'}</td>
                     <td className="py-3.5 px-4 text-right font-semibold">₹{inv.subtotal.toLocaleString('en-IN')}</td>
-                    <td className="py-3.5 px-4 text-right text-neutral-300">₹{cgst.toLocaleString('en-IN')}</td>
-                    <td className="py-3.5 px-4 text-right text-neutral-300">₹{sgst.toLocaleString('en-IN')}</td>
-                    <td className="py-3.5 px-4 text-right text-[#D4AF37]">₹{igst.toLocaleString('en-IN')}</td>
-                    <td className="py-3.5 px-4 text-right font-bold text-white">₹{inv.grandTotal.toLocaleString('en-IN')}</td>
+                    <td className="py-3.5 px-4 text-right text-slate-600">₹{cgst.toLocaleString('en-IN')}</td>
+                    <td className="py-3.5 px-4 text-right text-slate-600">₹{sgst.toLocaleString('en-IN')}</td>
+                    <td className="py-3.5 px-4 text-right text-amber-800 font-medium">₹{igst.toLocaleString('en-IN')}</td>
+                    <td className="py-3.5 px-4 text-right font-bold text-slate-900">₹{inv.grandTotal.toLocaleString('en-IN')}</td>
                   </tr>
                 );
               })}

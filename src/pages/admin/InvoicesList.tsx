@@ -74,11 +74,11 @@ export const InvoicesList: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="font-serif text-2xl font-bold text-white tracking-wide flex items-center gap-2">
+          <h1 className="font-serif text-2xl font-bold text-slate-900 tracking-wide flex items-center gap-2">
             <FileText className="w-6 h-6 text-[#0442A5]" />
             <span>Commercial Tax Invoices</span>
           </h1>
-          <p className="text-xs text-neutral-400 mt-1">
+          <p className="text-xs text-slate-500 mt-1">
             Master billing register with GST tax compliance, A4 printing, and payment status tracking.
           </p>
         </div>
@@ -86,15 +86,15 @@ export const InvoicesList: React.FC = () => {
         <div className="flex items-center space-x-3">
           <button
             onClick={exportCSV}
-            className="px-4 py-2.5 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-neutral-200 text-xs font-semibold border border-neutral-700 flex items-center space-x-2 transition-colors"
+            className="px-4 py-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold border border-slate-200/90 flex items-center space-x-2 transition-colors shadow-xs"
           >
-            <Download className="w-4 h-4 text-[#D4AF37]" />
+            <Download className="w-4 h-4 text-amber-600" />
             <span>Export CSV</span>
           </button>
 
           <Link
             to="/admin/invoices/new"
-            className="px-4 py-2.5 rounded-xl bg-[#0442A5] hover:bg-[#0553d1] text-white text-xs font-semibold shadow-lg shadow-[#0442A5]/30 flex items-center space-x-2 transition-all transform hover:scale-[1.02]"
+            className="px-4 py-2.5 rounded-xl bg-[#0442A5] hover:bg-[#033585] text-white text-xs font-semibold shadow-sm flex items-center space-x-2 transition-all transform hover:scale-[1.01]"
           >
             <PlusCircle className="w-4 h-4" />
             <span>Create New Invoice</span>
@@ -103,26 +103,28 @@ export const InvoicesList: React.FC = () => {
       </div>
 
       {/* Filter & Search Bar */}
-      <div className="bg-[#161922] p-4 rounded-2xl border border-neutral-800 flex flex-col md:flex-row gap-4 items-center justify-between">
+      <div className="bg-white p-4 rounded-2xl border border-slate-200/80 flex flex-col md:flex-row gap-4 items-center justify-between shadow-xs">
         <div className="relative flex-1 w-full">
-          <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-400" />
+          <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
           <input
             type="text"
             placeholder="Search by invoice # (e.g. HOS-2026-001), client name, or GSTIN..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 bg-[#0D1117] border border-neutral-700/80 rounded-xl text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-[#0442A5]"
+            className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
           />
         </div>
 
-        <div className="flex items-center space-x-2 w-full md:w-auto overflow-x-auto">
-          <Filter className="w-4 h-4 text-neutral-400 shrink-0" />
+        <div className="flex items-center space-x-2 w-full md:w-auto overflow-x-auto pb-1 md:pb-0">
+          <Filter className="w-4 h-4 text-slate-400 shrink-0" />
           {['ALL', 'PAID', 'PARTIAL', 'ISSUED', 'OVERDUE', 'DRAFT'].map(status => (
             <button
               key={status}
               onClick={() => setSelectedStatus(status)}
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors ${
-                selectedStatus === status ? 'bg-[#0442A5] text-white' : 'bg-neutral-800 text-neutral-400 hover:text-white'
+                selectedStatus === status
+                  ? 'bg-indigo-50 text-indigo-900 border border-indigo-200/80 shadow-xs'
+                  : 'bg-slate-100/80 text-slate-600 hover:bg-slate-200/80 hover:text-slate-900'
               }`}
             >
               {status}
@@ -132,10 +134,10 @@ export const InvoicesList: React.FC = () => {
       </div>
 
       {/* Invoices Master Table */}
-      <div className="bg-[#161922] border border-neutral-800 rounded-2xl overflow-hidden shadow-xl">
+      <div className="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-xs">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-[#0D1117] text-neutral-400 uppercase tracking-wider font-semibold border-b border-neutral-800">
+            <thead className="bg-slate-50/80 text-slate-500 uppercase tracking-wider font-semibold border-b border-slate-200">
               <tr>
                 <th className="py-3.5 px-4">Invoice #</th>
                 <th className="py-3.5 px-4">Issue Date</th>
@@ -148,23 +150,23 @@ export const InvoicesList: React.FC = () => {
                 <th className="py-3.5 px-4 text-center">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-neutral-800 text-neutral-200">
+            <tbody className="divide-y divide-slate-100 text-slate-700">
               {filteredInvoices.map((inv) => (
-                <tr key={inv.id} className="hover:bg-[#1D2230] transition-colors">
-                  <td className="py-4 px-4 font-mono font-bold text-[#CDEBFF]">{inv.invoiceNumber}</td>
-                  <td className="py-4 px-4 text-neutral-400">
+                <tr key={inv.id} className="hover:bg-slate-50/70 transition-colors">
+                  <td className="py-4 px-4 font-mono font-bold text-indigo-950">{inv.invoiceNumber}</td>
+                  <td className="py-4 px-4 text-slate-500">
                     {new Date(inv.issueDate || inv.invoiceDate || inv.createdAt || Date.now()).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}
                   </td>
-                  <td className="py-4 px-4 font-semibold text-white">{inv.customerName}</td>
-                  <td className="py-4 px-4 font-mono text-neutral-400">{inv.customerGstin || 'URP'}</td>
-                  <td className="py-4 px-4 text-right font-bold text-white">₹{inv.grandTotal.toLocaleString('en-IN')}</td>
-                  <td className="py-4 px-4 text-right font-semibold text-emerald-400">₹{inv.amountPaid.toLocaleString('en-IN')}</td>
-                  <td className="py-4 px-4 text-right font-bold text-red-400">₹{inv.balanceDue.toLocaleString('en-IN')}</td>
+                  <td className="py-4 px-4 font-semibold text-slate-900">{inv.customerName}</td>
+                  <td className="py-4 px-4 font-mono text-slate-500">{inv.customerGstin || 'URP'}</td>
+                  <td className="py-4 px-4 text-right font-bold text-slate-900">₹{inv.grandTotal.toLocaleString('en-IN')}</td>
+                  <td className="py-4 px-4 text-right font-semibold text-emerald-700">₹{inv.amountPaid.toLocaleString('en-IN')}</td>
+                  <td className="py-4 px-4 text-right font-bold text-rose-700">₹{inv.balanceDue.toLocaleString('en-IN')}</td>
                   <td className="py-4 px-4 text-center">
-                    <span className={`px-2.5 py-1 text-[10px] font-bold rounded-md ${
-                      inv.status === 'PAID' ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' :
-                      inv.status === 'PARTIAL' ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' :
-                      'bg-red-500/20 text-red-400 border border-red-500/30'
+                    <span className={`px-2.5 py-1 text-[10px] font-semibold rounded-md border ${
+                      inv.status === 'PAID' ? 'bg-emerald-50 text-emerald-700 border-emerald-200/70' :
+                      inv.status === 'PARTIAL' ? 'bg-amber-50 text-amber-700 border-amber-200/70' :
+                      'bg-rose-50 text-rose-700 border-rose-200/70'
                     }`}>
                       {inv.status}
                     </span>
@@ -172,7 +174,7 @@ export const InvoicesList: React.FC = () => {
                   <td className="py-4 px-4 text-center">
                     <button
                       onClick={() => setSelectedInvoice(inv)}
-                      className="px-3 py-1.5 rounded-lg bg-neutral-800 hover:bg-[#0442A5] text-neutral-300 hover:text-white font-semibold transition-colors flex items-center space-x-1.5 mx-auto"
+                      className="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-indigo-50 text-slate-700 hover:text-indigo-900 font-medium transition-colors border border-slate-200/60 flex items-center space-x-1.5 mx-auto"
                     >
                       <Eye className="w-3.5 h-3.5" />
                       <span>Inspect & Print</span>
@@ -185,7 +187,7 @@ export const InvoicesList: React.FC = () => {
         </div>
 
         {filteredInvoices.length === 0 && (
-          <div className="p-12 text-center text-neutral-500 text-xs">
+          <div className="p-12 text-center text-slate-400 text-xs">
             No tax invoices match your current search or status filter.
           </div>
         )}

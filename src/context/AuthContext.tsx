@@ -26,7 +26,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [user, setUser] = useState<User | null>(() => {
     try {
       const saved = localStorage.getItem('hos_auth_user');
-      return saved ? JSON.parse(saved) : defaultAdminUser;
+      if (saved && saved !== 'null' && saved !== 'undefined') {
+        const parsed = JSON.parse(saved);
+        if (parsed && parsed.email) return parsed;
+      }
+      localStorage.setItem('hos_auth_user', JSON.stringify(defaultAdminUser));
+      return defaultAdminUser;
     } catch {
       return defaultAdminUser;
     }
